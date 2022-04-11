@@ -1,0 +1,25 @@
+.contentor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.item-contentor {
+    flex-basis: 33%;
+}
+
+.post-sozinho{
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100%;
+    margin: 0 5%;
+}
+
+.hoje-post{
+    max-width: 59%;
+}
+.hoje-thumbs{
+    max-width: 59%;
+}
