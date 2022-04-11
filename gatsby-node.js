@@ -6,11 +6,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const getArticles = new Promise((resolve, reject) => {
     graphql(`
     {
-      allStrapiArticle {
+      allStrapiArticle(filter: {language: {id: {eq: "625279e89ec5232714eef52d"}}}) {
         edges {
           node {
             id
             url
+            sport{
+              id
+            }
           }
         }
       }
@@ -22,6 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
           component: path.resolve(`src/templates/article.js`),
           context: {
             id: node.id,
+            sportId: node.sport.id
           },
         })
         createPage({
@@ -29,6 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
           component: path.resolve(`src/templates/article.amp.js`),
           context: {
             id: node.id,
+            sportId: node.sport.id
           },
         })
       })

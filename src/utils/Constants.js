@@ -9,3 +9,4 @@ export const ARTICLE_COLLECTION='original-article';
 
 //LOCALE
 export const LOCALE_CODE='pt-BR';
+export const LANGUAGE_ID='625279e89ec5232714eef52d';

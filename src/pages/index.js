@@ -81,9 +81,10 @@ const IndexPage = ({ data }) => (
       <div class="gazette-catagory-posts-area">
         <div class="container">
           <div class="row">
-            <div class="col-12 col-md-4">
-              <div class="gazette-single-catagory-post">
-                {data?.allStrapiArticle?.edges.slice(14, 15).map((article) =>
+            {data?.allStrapiArticle?.edges.slice(14, 38).map((article) =>
+              <Link to={article.node.url} class="col-12 col-md-4">
+                <div class="gazette-single-catagory-post">
+
                   <>
                     <div class="single-catagory-post-thumb mb-15">
                       <Image style={{ height: "233px", marginBottom: "0" }} src={article.node.cover} alt={article.node.title} />
@@ -94,134 +95,13 @@ const IndexPage = ({ data }) => (
                     <h5> <Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
                     <span><Date date={article.node.date}></Date></span>
                   </>
-                )}
-              </div>
-              {data?.allStrapiArticle?.edges.slice(15, 18).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
                 </div>
-              )}
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="gazette-single-catagory-post">
-                {data?.allStrapiArticle?.edges.slice(18, 19).map((article) =>
-                  <>
-                    <div class="single-catagory-post-thumb mb-15">
-                      <Image style={{ height: "233px", marginBottom: "0" }} src={article.node.cover} alt={article.node.title} />
-                    </div>
-                    <div class="gazette-post-tag">
-                      <Link to={article.node.sport.slug} >{article.node.sport.name}</Link>
-                    </div>
-                    <h5> <Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                    <span><Date date={article.node.date}></Date></span>
-                  </>
-                )}
-              </div>
-              {data?.allStrapiArticle?.edges.slice(19, 22).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
-                </div>
-              )}
-            </div>
-            <div class="col-12 col-md-4">
-              {data?.allStrapiArticle?.edges.slice(22, 23).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <div class="single-catagory-post-thumb mb-15">
-                    <Image style={{ height: "233px", marginBottom: "0" }} src={article.node.cover} alt={article.node.title} />
-                  </div>
-                  <div class="gazette-post-tag">
-                    <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
-                  </div>
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
-                </div>
-              )}
-              {data?.allStrapiArticle?.edges.slice(23, 26).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="gazette-catagory-posts-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-4">
-              <div class="gazette-single-catagory-post">
-                {data?.allStrapiArticle?.edges.slice(26, 27).map((article) =>
-                  <>
-                    <div class="single-catagory-post-thumb mb-15">
-                      <Image style={{ height: "233px", marginBottom: "0" }} src={article.node.cover} alt={article.node.title} />
-                    </div>
-                    <div class="gazette-post-tag">
-                    <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
-                  </div>
-                    <h5> <Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                    <span><Date date={article.node.date}></Date></span>
-                  </>
-                )}
-              </div>
-              {data?.allStrapiArticle?.edges.slice(27, 30).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
-                </div>
-              )}
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="gazette-single-catagory-post">
-                {data?.allStrapiArticle?.edges.slice(30, 31).map((article) =>
-                  <>
-                    <div class="single-catagory-post-thumb mb-15">
-                      <Image style={{ height: "233px", marginBottom: "0" }} src={article.node.cover} alt={article.node.title} />
-                    </div>
-                    <div class="gazette-post-tag">
-                      <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
-                    </div>
-                    <h5> <Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                    <span><Date date={article.node.date}></Date></span>
-                  </>
-                )}
-              </div>
-              {data?.allStrapiArticle?.edges.slice(31, 34).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
-                </div>
-              )}
-            </div>
-            <div class="col-12 col-md-4">
-              {data?.allStrapiArticle?.edges.slice(34, 35).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <div class="single-catagory-post-thumb mb-15">
-                    <Image style={{ height: "233px", marginBottom: "0" }} src={article.node.cover} alt={article.node.title} />
-                  </div>
-                  <div class="gazette-post-tag">
-                    <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
-                  </div>
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
-                </div>
-              )}
-              {data?.allStrapiArticle?.edges.slice(35, 38).map((article) =>
-                <div class="gazette-single-catagory-post">
-                  <h5><Link class="font-pt" to={article.node.url} >{article.node.title}</Link></h5>
-                  <span><Date date={article.node.date}></Date></span>
-                </div>
-              )}
-            </div>
+              </Link>
+            )}
           </div>
         </div>
       </div>
     </section>
-                <Image/>
-
-
   </>
 
 )
@@ -230,7 +110,11 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allStrapiArticle {
+    allStrapiArticle(
+      filter: {language: {id: {eq: "625279e89ec5232714eef52d"}}}
+      limit: 40
+      sort: {fields: createdAt, order: DESC}
+    ) {
       edges {
         node {
           title
