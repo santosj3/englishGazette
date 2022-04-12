@@ -4,8 +4,9 @@ import Header from '../components/header'
 import Image from '../components/image'
 import Date from '../components/date'
 import { LOGO_SPORTS } from '../utils/Constants'
-const SportTemplate = ({ data, numPages, currentPage }) => {
-  const logo = LOGO_SPORTS.find((item)=>item.id===data.strapiSport.slug)?.url
+const SportTemplate = ({ data, pageContext }) => {
+  const logo = LOGO_SPORTS.find((item) => item.id === data.strapiSport.slug)?.url
+  const { numPages, currentPage } = pageContext
   return (
     <>
       <Header sports={data.allStrapiSport.edges} />
@@ -24,8 +25,7 @@ const SportTemplate = ({ data, numPages, currentPage }) => {
           </div>
         </div>
       </section>
-      <span>{numPages}</span>
-      <span>{currentPage}</span>
+
       <section class="main-content-wrapper section_padding_100">
         <div class="container">
           <div class="row">
@@ -48,8 +48,38 @@ const SportTemplate = ({ data, numPages, currentPage }) => {
               </div>
             </div>
           </div>
+          {numPages > 1 && <div class="row">
+            <div class="col-12">
+              <div class="gazette-pagination-area">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {currentPage > 1 && <li class="page-item">
+                      <Link activeClassName="page-link" class="page-link" to={currentPage===2? `/${data.strapiSport.slug}`: `/${data.strapiSport.slug}/${currentPage-1}`} aria-label="Previous"><i class="fa fa-angle-left"></i></Link>
+                    </li>}
+                    {numPages > 5 &&
+                      <>
+                        <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={`/${data.strapiSport.slug}/1`}>1</Link></li>
+                        <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={`/${data.strapiSport.slug}/2`}>2</Link></li>
+                        <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={`/${data.strapiSport.slug}/3`}>3</Link></li>
+                        <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={`/${data.strapiSport.slug}/4`}>4</Link></li>
+                        <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={`/${data.strapiSport.slug}/5`}>5</Link></li>
+                      </>
+                    }
+                    {numPages < 5 && [...Array(numPages)].map((x, i) => <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={i==0?`/${data.strapiSport.slug}` : `/${data.strapiSport.slug}/${i+1}`}>{i+1}</Link></li>)
+
+                    }
+                    {currentPage < numPages && <li class="page-item">
+                      <Link activeClassName="page-link" class="page-link" to={`/${data.strapiSport.slug}/${currentPage+1}`} aria-label="Next"><i class="fa fa-angle-right"></i></Link>
+                    </li>}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>}
         </div>
       </section>
+
+
     </>)
 }
 

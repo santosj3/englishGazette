@@ -23,3 +23,7 @@
 .hoje-thumbs{
     max-width: 59%;
 }
+.pagina-seleccionada{
+    color: #fff !important;
+    background-color: #ff0303 !important;
+}
