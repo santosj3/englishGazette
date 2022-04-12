@@ -68,7 +68,7 @@ const IndexPage = ({ data }) => (
                       <p>{article.node.sport.name}</p>
                     </div>
                     <div class="breaking-news-heading gradient-background-overlay" style={{ zIndex: 5 }}>
-                      <h5 class="font-pt" >{article.node.title}</h5>
+                      <h5 class="font-pt" ><Link to ={article.node.url} style={{color:"white"}} >{article.node.title}</Link></h5>
                     </div>
                   </div>
                 )}

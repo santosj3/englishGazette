@@ -33,7 +33,7 @@ const Header = ({ sports }) => (
                 <ul class="navbar-nav mr-auto">
                   {sports.map(sport => (
                     <li class="nav-item">
-                      <Link class="nav-link" to={`/${sport.node.slug}`}>{sport.node.name}</Link>
+                      <Link activeClassName="nav-link" class="nav-link" to={`/${sport.node.slug}`}>{sport.node.name}</Link>
                     </li>
                   ))}                      
                 </ul>
