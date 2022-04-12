@@ -5,6 +5,7 @@ import Date from "../components/date"
 import Image from "../components/image"
 
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 const IndexPage = ({ data }) => (
   <>
@@ -102,6 +103,7 @@ const IndexPage = ({ data }) => (
         </div>
       </div>
     </section>
+    <Footer sports={data.allStrapiSport.edges}/>   
   </>
 
 )

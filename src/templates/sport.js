@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Header from '../components/header'
+import Footer from '../components/footer'
 import Image from '../components/image'
 import Date from '../components/date'
 import { LOGO_SPORTS } from '../utils/Constants'
@@ -54,7 +55,7 @@ const SportTemplate = ({ data, pageContext }) => {
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     {currentPage > 1 && <li class="page-item">
-                      <Link activeClassName="page-link" class="page-link" to={currentPage===2? `/${data.strapiSport.slug}`: `/${data.strapiSport.slug}/${currentPage-1}`} aria-label="Previous"><i class="fa fa-angle-left"></i></Link>
+                      <Link activeClassName="page-link" class="page-link" to={currentPage === 2 ? `/${data.strapiSport.slug}` : `/${data.strapiSport.slug}/${currentPage - 1}`} aria-label="Previous"><i class="fa fa-angle-left"></i></Link>
                     </li>}
                     {numPages > 5 &&
                       <>
@@ -65,11 +66,11 @@ const SportTemplate = ({ data, pageContext }) => {
                         <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={`/${data.strapiSport.slug}/5`}>5</Link></li>
                       </>
                     }
-                    {numPages < 5 && [...Array(numPages)].map((x, i) => <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={i==0?`/${data.strapiSport.slug}` : `/${data.strapiSport.slug}/${i+1}`}>{i+1}</Link></li>)
+                    {numPages < 5 && [...Array(numPages)].map((x, i) => <li class="page-item"><Link activeClassName="page-link pagina-seleccionada" class="page-link" to={i == 0 ? `/${data.strapiSport.slug}` : `/${data.strapiSport.slug}/${i + 1}`}>{i + 1}</Link></li>)
 
                     }
                     {currentPage < numPages && <li class="page-item">
-                      <Link activeClassName="page-link" class="page-link" to={`/${data.strapiSport.slug}/${currentPage+1}`} aria-label="Next"><i class="fa fa-angle-right"></i></Link>
+                      <Link activeClassName="page-link" class="page-link" to={`/${data.strapiSport.slug}/${currentPage + 1}`} aria-label="Next"><i class="fa fa-angle-right"></i></Link>
                     </li>}
                   </ul>
                 </nav>
@@ -78,8 +79,7 @@ const SportTemplate = ({ data, pageContext }) => {
           </div>}
         </div>
       </section>
-
-
+      <Footer sports={data.allStrapiSport.edges} />
     </>)
 }
 
