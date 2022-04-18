@@ -4,13 +4,55 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
 import Date from '../components/date'
-import { LOGO_SPORTS } from '../utils/Constants'
+import { Helmet } from "react-helmet"
+import { LOGO_SPORTS, CANNONNICAL_URL } from '../utils/Constants'
 const SportTemplate = ({ data, pageContext }) => {
   const logo = LOGO_SPORTS.find((item) => item.id === data.strapiSport.slug)?.url
   const { numPages, currentPage } = pageContext
   return (
     <>
       <Header sports={data.allStrapiSport.edges} />
+      <Helmet title={data.strapiSport.name} titleTemplate={"Gazeta - %s"}>
+      <meta name="description" content={`Tudo sobre ${data.strapiSport.name}`}  />
+      <meta name="image" content={logo} />
+      <meta property="og:url" content={`${CANNONNICAL_URL}/${data.strapiSport.slug}`} />
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="pt_BR" />
+      <meta property="og:title" content={data.strapiSport.name} />
+      <meta property="og:description" content={`Tudo sobre ${data.strapiSport.name}`} />
+      <meta property="og:image" content={logo} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={data.strapiSport.name} />
+      <meta name="twitter:description" content={`Tudo sobre ${data.strapiSport.name}`} />
+      <meta name="twitter:image" content={logo} />
+      <link rel="icon" href="https://technext.github.io/gazette/img/core-img/favicon.ico"/>
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "url": "${CANNONNICAL_URL}",
+          "name": "Gazeta Esportiva",          
+        }
+      `}
+      </script>
+      <script type="application/ld+json">
+        {`{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Homepage",
+        "item": "${CANNONNICAL_URL}"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "${data.strapiSport.name}",
+      }]
+    }`}
+      </script>
+    </Helmet>
       <section class="single-post-area">
         <div class="single-post-title bg-img background-overlay" style={{
           backgroundImage: `url("${logo}")`
@@ -19,7 +61,7 @@ const SportTemplate = ({ data, pageContext }) => {
             <div class="row h-100 align-items-end">
               <div class="col-12">
                 <div class="single-post-title-content">
-                  <h2 class="font-pt">{data.strapiSport.name}</h2>
+                  <h1 style={{color:"white"}} class="titulo-principal font-pt">{data.strapiSport.name}</h1>
                 </div>
               </div>
             </div>
@@ -34,12 +76,12 @@ const SportTemplate = ({ data, pageContext }) => {
               <div class="gazette-todays-post ">
                 {data?.allStrapiArticle?.edges.map((article) =>
                   <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                    <div style={{ marginRight: "2%", width: "30%" }}>
+                    <div class="image-single-post-mobile" style={{ marginRight: "2%", width: "30%" }}>
                       <Image style={{ width: "100%", height: "180px" }} src={article.node.cover} alt={article.node.title} />
                     </div>
-                    <div style={{ maxWidth: "68%" }}>
+                    <div class="text-single-post-mobile" style={{ width: "68%" }}>
                       <div class="gazette-post-tag">
-                        <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
+                        <Link class="titulos" to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
                       </div>
                       <h3 syle={{ marginBottom: "0" }}><Link to={article.node.url} style={{ fontWeight: 400, fontSize: "25px" }} class="font-pt">{article.node.title}</Link></h3>
                       <span class="gazette-post-date mb-2" style={{ float: "right" }}><Date date={article.node.date}></Date></span>

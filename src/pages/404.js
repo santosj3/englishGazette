@@ -38,10 +38,10 @@ const NotFoundPage = ({ data }) => {
               </div>
                 {data?.allStrapiArticle?.edges.map((article) =>
                   <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                    <div style={{ marginRight: "2%", width: "30%" }}>
+                    <div class="image-single-post-mobile" style={{ marginRight: "2%", width: "30%" }}>
                       <Image style={{ width: "100%", height: "180px" }} src={article.node.cover} alt={article.node.title} />
                     </div>
-                    <div style={{ maxWidth: "68%" }}>
+                    <div  class="text-single-post-mobile"  style={{ width: "68%" }}>
                       <div class="gazette-post-tag">
                         <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
                       </div>

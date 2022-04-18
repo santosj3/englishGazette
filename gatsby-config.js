@@ -1,9 +1,9 @@
 module.exports = {  
   siteMetadata: {
     title: `new`,
-    siteUrl: 'localhost:8000'
+    siteUrl: 'http://localhost:9000'
   },
-  plugins: ["gatsby-plugin-image", "gatsby-plugin-sitemap", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+  plugins: ["gatsby-plugin-image", "gatsby-plugin-sharp","gatsby-plugin-advanced-sitemap", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
@@ -22,12 +22,19 @@ module.exports = {
   },{
     resolve: `gatsby-plugin-amp`,
     options: {     
-      canonicalBaseUrl: 'localhost:8000',
+      canonicalBaseUrl: 'http://localhost:9000',
       components: ['amp-img'],
       excludedPaths: ['/404*', '/'],
-      pathIdentifier: '/amp/',
+      pathIdentifier: '/amp',
       relAmpHtmlPattern: '{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}',
       useAmpClientIdApi: true,
     },
+  },{
+    resolve: 'gatsby-plugin-robots-txt',
+    options: {
+      host: 'http://localhost:9000',
+      sitemap: 'http://localhost:9000/sitemap.xml',
+      policy: [{ userAgent: '*', allow: '/' }]
+    }
   },]
 };
