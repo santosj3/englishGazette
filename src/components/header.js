@@ -2,9 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import Logo from '../assets/img/core-img/logo.png'
-import "../assets/css/core-style.css"
-import "../assets/css/style.css"
-import "../assets/css/responsive.css"
+import "../assets/css/final.css";
 
 const Header = ({ sports }) => (
   
