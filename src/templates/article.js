@@ -4,8 +4,8 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
 import Date from '../components/date'
-import { CANNONNICAL_URL } from '../utils/Constants'
-import { Helmet } from "react-helmet"
+import { CANNONNICAL_URL, STYLE_URL } from "../utils/Constants";
+import { Helmet } from "react-helmet";
 const ArticleTemplate = ({ data }) => (
   <>
     <Header sports={data.allStrapiSport.edges} />
@@ -15,13 +15,23 @@ const ArticleTemplate = ({ data }) => (
       <meta property="og:url" content={data.strapiArticle.url} />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={data.strapiArticle.title} />
-      <meta property="og:description" content={data.strapiArticle.description} />
+      <meta
+        property="og:description"
+        content={data.strapiArticle.description}
+      />
       <meta property="og:image" content={data.strapiArticle.cover} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={data.strapiArticle.title} />
-      <meta name="twitter:description" content={data.strapiArticle.description} />
+      <meta
+        name="twitter:description"
+        content={data.strapiArticle.description}
+      />
       <meta name="twitter:image" content={data.strapiArticle.cover} />
-      <link rel="icon" href="https://technext.github.io/gazette/img/core-img/favicon.ico"/>
+      <link rel="stylesheet" href={STYLE_URL}></link>
+      <link
+        rel="icon"
+        href="https://technext.github.io/gazette/img/core-img/favicon.ico"
+      />
       <script type="application/ld+json">
         {`
         {
@@ -67,8 +77,7 @@ const ArticleTemplate = ({ data }) => (
     }`}
       </script>
       <script type="application/ld+json">
-        {
-          `{
+        {`{
       "@context": "https://schema.org",
       "@type": "NewsArticle",
       "mainEntityOfPage": {
@@ -98,25 +107,39 @@ const ArticleTemplate = ({ data }) => (
       </script>
     </Helmet>
     <section class="single-post-area">
-      <div class="single-post-title bg-img background-overlay" style={{
-        backgroundImage: `url("${data.strapiArticle.cover}")`
-      }} >
+      <div
+        class="single-post-title bg-img background-overlay"
+        style={{
+          backgroundImage: `url("${data.strapiArticle.cover}")`,
+          minHeight: "150px",
+          paddingTop: "2%",
+        }}
+      >
         <div class="container h-100">
           <div class="row h-100 align-items-end">
             <div class="col-12">
               <div class="single-post-title-content">
                 <div class="gazette-post-tag">
-                  <Link to={`/${data.strapiArticle.sport.slug}`}>{data.strapiArticle.sport.name}</Link>
+                  <Link to={`/${data.strapiArticle.sport.slug}`}>
+                    {data.strapiArticle.sport.name}
+                  </Link>
                 </div>
-                <h1 style={{ color: "white" }} class="titulo-principal font-pt">{data.strapiArticle.title}</h1>
-                <p><Date date={data.strapiArticle.dateToPresent} datetime={data.strapiArticle.datetime}></Date></p>
+                <h1 style={{ color: "white" }} class="titulo-principal font-pt">
+                  {data.strapiArticle.title}
+                </h1>
+                <p>
+                  <Date
+                    date={data.strapiArticle.dateToPresent}
+                    datetime={data.strapiArticle.datetime}
+                  ></Date>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="single-post-contents">
+      <div class="single-post-contents" style={{ marginTop: "2%" }}>
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-md-8">
@@ -126,12 +149,17 @@ const ArticleTemplate = ({ data }) => (
             </div>
             <div class="col-12">
               <div class="single-post-thumb">
-                <img src={data.strapiArticle.cover} alt={data.strapiArticle.title} />
+                <img
+                  src={data.strapiArticle.cover}
+                  alt={data.strapiArticle.title}
+                />
               </div>
             </div>
             <div class="col-12 col-md-8">
-              <div class="conteudo single-post-text" dangerouslySetInnerHTML={{ __html: data.strapiArticle.content }}>
-              </div>
+              <div
+                class="conteudo single-post-text"
+                dangerouslySetInnerHTML={{ __html: data.strapiArticle.content }}
+              ></div>
             </div>
           </div>
         </div>
@@ -144,42 +172,108 @@ const ArticleTemplate = ({ data }) => (
           <div class="col-12 col-lg-12">
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
-                <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>Mais de {data.strapiArticle.sport.name}</h4>
+                <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
+                  Mais de {data.strapiArticle.sport.name}
+                </h4>
               </div>
               {data?.relatedArticle?.edges.map((article) =>
-                article.node.id !== data.strapiArticle.id ?
-                  <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                    <div style={{ marginRight: "2%", width: "30%" }}>
-                      <Image style={{ width: "100%", height: "200px" }} src={article.node.cover} alt={article.node.title} />
+                article.node.id !== data.strapiArticle.id ? (
+                  <Link
+                    to={article.node.url}
+                    class="gazette-single-todays-post d-md-flex align-items-start mb-50"
+                  >
+                    <div
+                      class="image-single-post-mobile"
+                      style={{ marginRight: "2%", width: "30%" }}
+                    >
+                      <Image
+                        style={{ width: "100%", height: "200px" }}
+                        src={article.node.cover}
+                        alt={article.node.title}
+                      />
                     </div>
-                    <div style={{ maxWidth: "68%" }}>
+                    <div
+                      class="text-single-post-mobile"
+                      style={{ width: "68%" }}
+                    >
                       <div class="gazette-post-tag">
-                        <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
+                        <Link to={`/${article.node.sport.slug}`}>
+                          {article.node.sport.name}
+                        </Link>
                       </div>
-                      <h3 syle={{ marginBottom: "0" }}><Link to={article.node.url} style={{ fontWeight: 400, fontSize: "25px" }} class="font-pt">{article.node.title}</Link></h3>
-                      <span class="gazette-post-date mb-2" style={{ float: "right" }}><Date date={article.node.dateToPresent} datetime={article.node.datetime}></Date></span>
+                      <h3 syle={{ marginBottom: "0" }}>
+                        <Link
+                          to={article.node.url}
+                          style={{ fontWeight: 400, fontSize: "25px" }}
+                          class="font-pt"
+                        >
+                          {article.node.title}
+                        </Link>
+                      </h3>
+                      <span
+                        class="gazette-post-date mb-2"
+                        style={{ float: "right" }}
+                      >
+                        <Date
+                          date={article.node.dateToPresent}
+                          datetime={article.node.datetime}
+                        ></Date>
+                      </span>
                     </div>
-                  </div> : null
+                  </Link>
+                ) : null
               )}
             </div>
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
-                <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>Últimas</h4>
+                <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
+                  Últimas
+                </h4>
               </div>
               {data?.lastArticles?.edges.map((article) =>
-                article.node.id !== data.strapiArticle.id ?
-                  <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                    <div class="image-single-post-mobile" style={{ marginRight: "2%", width: "30%" }}>
-                      <Image style={{ width: "100%", height: "200px" }} src={article.node.cover} alt={article.node.title} />
+                article.node.id !== data.strapiArticle.id ? (
+                  <Link
+                    to={article.node.url} class="gazette-single-todays-post d-md-flex align-items-start mb-50">
+                    <div
+                      class="image-single-post-mobile"
+                      style={{ marginRight: "2%", width: "30%" }}
+                    >
+                      <Image
+                        style={{ width: "100%", height: "200px" }}
+                        src={article.node.cover}
+                        alt={article.node.title}
+                      />
                     </div>
-                    <div class="text-single-post-mobile" style={{ width: "68%" }}>
+                    <div
+                      class="text-single-post-mobile"
+                      style={{ width: "68%" }}
+                    >
                       <div class="gazette-post-tag">
-                        <Link to={`/${article.node.sport.slug}`}>{article.node.sport.name}</Link>
+                        <Link to={`/${article.node.sport.slug}`}>
+                          {article.node.sport.name}
+                        </Link>
                       </div>
-                      <h3 syle={{ marginBottom: "0" }}><Link to={article.node.url} style={{ fontWeight: 400, fontSize: "25px" }} class="font-pt">{article.node.title}</Link></h3>
-                      <span class="gazette-post-date mb-2" style={{ float: "right" }}><Date date={article.node.dateToPresent} datetime={article.node.datetime}></Date></span>
+                      <h3 syle={{ marginBottom: "0" }}>
+                        <Link
+                          to={article.node.url}
+                          style={{ fontWeight: 400, fontSize: "25px" }}
+                          class="font-pt"
+                        >
+                          {article.node.title}
+                        </Link>
+                      </h3>
+                      <span
+                        class="gazette-post-date mb-2"
+                        style={{ float: "right" }}
+                      >
+                        <Date
+                          date={article.node.dateToPresent}
+                          datetime={article.node.datetime}
+                        ></Date>
+                      </span>
                     </div>
-                  </div> : null
+                  </Link>
+                ) : null
               )}
             </div>
           </div>
@@ -187,9 +281,8 @@ const ArticleTemplate = ({ data }) => (
       </div>
     </section>
     <Footer sports={data.allStrapiSport.edges} />
-
   </>
-)
+);
 
 export default ArticleTemplate
 

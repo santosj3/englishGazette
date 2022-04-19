@@ -20,3 +20,6 @@ export const LOGO_SPORTS=[
     {id:"moto-gp", url: "https://res.cloudinary.com/rosanjeans/image/upload/v1649748416/moto-gp_yb05gq.png"},
     {id:"indycar", url: "https://res.cloudinary.com/rosanjeans/image/upload/v1649748416/indycar_jpk8e4.png"},
 ]
+
+//Librarys
+export const STYLE_URL="https://res.cloudinary.com/rosanjeans/raw/upload/v1650307973/styles_sngzrt.css";

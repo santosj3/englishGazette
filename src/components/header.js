@@ -1,8 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Logo from '../assets/img/core-img/logo.png'
-import "../assets/css/final.css";
+import Logo from "../assets/img/core-img/logo.png";
 
 const Header = ({ sports }) => (
   
