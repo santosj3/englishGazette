@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import AmpHeader from '../components/ampHeader'
-import Footer from '../components/footer'
-import Date from '../components/date'
-import { CANNONNICAL_URL } from '../utils/Constants'
-import { Helmet } from "react-helmet"
+import AmpHeader from "../components/ampHeader";
+import Date from "../components/date";
+import { CANNONNICAL_URL } from "../utils/Constants";
+import { Helmet } from "react-helmet";
 
 const ArticleTemplate = ({ data }) => (
   <>
@@ -87,7 +86,7 @@ const ArticleTemplate = ({ data }) => (
       "dateModified": "${data.strapiArticle.dateToGoogle}",
       "author": {
         "@type": "Person",
-        "name": "João Santos",
+        "name": "Carlos Santos",
         "url": "${CANNONNICAL_URL}"
       },
       "publisher": {
@@ -101,23 +100,18 @@ const ArticleTemplate = ({ data }) => (
     }`}
       </script>
     </Helmet>
-    <section class="single-post-area">
-      <div
-        class="single-post-title bg-img background-overlay"
-        style={{
-          backgroundImage: `url("${data.strapiArticle.cover}")`,
-        }}
-      >
+    <section class="amp-section single-post-area">
+      <div class="single-post-title bg-img background-overlay">
         <div class="container h-100">
           <div class="row h-100 align-items-end">
             <div class="col-12">
-              <div class="single-post-title-content">
-                <div class="gazette-post-tag">
+              <div class="amp-section single-post-title-content">
+                <div class=" gazette-post-tag">
                   <Link to={`/${data.strapiArticle.sport.slug}`}>
                     {data.strapiArticle.sport.name}
                   </Link>
                 </div>
-                <h1 class="titulo-principal font-pt">
+                <h1 class="amp-section titulo-principal font-pt">
                   {data.strapiArticle.title}
                 </h1>
                 <p>
@@ -142,12 +136,14 @@ const ArticleTemplate = ({ data }) => (
             </div>
             <div class="col-12">
               <div class="single-post-thumb">
-                <amp-img
-                  height="300"
-                  width="350"
-                  src={data.strapiArticle.cover}
-                  alt={data.strapiArticle.title}
-                />
+                <figure>
+                  <amp-img
+                    height="190"
+                    width="300"
+                    src={data.strapiArticle.cover}
+                    alt={data.strapiArticle.title}
+                  />
+                </figure>
               </div>
             </div>
             <div class="col-12 col-md-8">
@@ -156,7 +152,9 @@ const ArticleTemplate = ({ data }) => (
                 dangerouslySetInnerHTML={{
                   __html: data.strapiArticle.ampContent
                     .replaceAll("<div<", "<")
-                    .replaceAll("</div<", "<"),
+                    .replaceAll("</div<", "<")
+                    .replaceAll("<style>", "<div className='erro-estilo'>")
+                    .replaceAll("</style>", "</div>"),
                 }}
               ></div>
             </div>
@@ -165,64 +163,47 @@ const ArticleTemplate = ({ data }) => (
       </div>
     </section>
 
-    <section class="main-content-wrapper section_padding_100">
+    <section class="amp-section main-content-wrapper section_padding_100">
       <div class="container">
         <div class="row">
           <div class="col-12 col-lg-12">
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
-                <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
-                  Mais de {data.strapiArticle.sport.name}
-                </h4>
+                <h4>Mais de {data.strapiArticle.sport.name}</h4>
               </div>
               {data?.relatedArticle?.edges.map((article) =>
                 article.node.id !== data.strapiArticle.id ? (
-                  <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                    <div style={{ marginRight: "2%", width: "30%" }}>
+                  <figure class="gazette-single-todays-post d-md-flex align-items-start mb-50">
+                     <Link to={article.node.url} style={{ marginRight: "2%", width: "30%" }}>
                       <amp-img
                         width="300"
                         height="190"
                         src={article.node.cover}
                         alt={article.node.title}
                       />
-                    </div>
-                    <div style={{ maxWidth: "68%" }}>
+                    </Link>
+                    <div>
                       <div class="gazette-post-tag">
                         <Link to={`/${article.node.sport.slug}`}>
                           {article.node.sport.name}
                         </Link>
                       </div>
-                      <Link
-                        to={article.node.url}
-                        style={{ fontWeight: 400, fontSize: "25px" }}
-                        class="font-pt"
-                      >
+                      <Link to={article.node.url} class="font-pt more-article">
                         {article.node.title}
                       </Link>
-                      <span
-                        class="gazette-post-date mb-2"
-                        style={{ float: "right" }}
-                      >
-                        <Date
-                          date={article.node.dateToPresent}
-                          datetime={article.node.datetime}
-                        ></Date>
-                      </span>
                     </div>
-                  </div>
+                  </figure>
                 ) : null
               )}
             </div>
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
-                <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
-                  Últimas
-                </h4>
+                <h4>Últimas</h4>
               </div>
               {data?.lastArticles?.edges.map((article) =>
                 article.node.id !== data.strapiArticle.id ? (
-                  <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                    <div
+                  <figure class="gazette-single-todays-post d-md-flex align-items-start mb-50">
+                    <Link to={article.node.url}
                       class="image-single-post-mobile"
                       style={{ marginRight: "2%", width: "30%" }}
                     >
@@ -232,34 +213,18 @@ const ArticleTemplate = ({ data }) => (
                         src={article.node.cover}
                         alt={article.node.title}
                       />
-                    </div>
-                    <div
-                      class="text-single-post-mobile"
-                      style={{ width: "68%" }}
-                    >
+                    </Link>
+                    <div class="text-single-post-mobile">
                       <div class="gazette-post-tag">
                         <Link to={`/${article.node.sport.slug}`}>
                           {article.node.sport.name}
                         </Link>
                       </div>
-                      <Link
-                        to={article.node.url}
-                        style={{ fontWeight: 400, fontSize: "25px" }}
-                        class="font-pt"
-                      >
+                      <Link to={article.node.url} class="font-pt more-article">
                         {article.node.title}
                       </Link>
-                      <span
-                        class="gazette-post-date mb-2"
-                        style={{ float: "right" }}
-                      >
-                        <Date
-                          date={article.node.dateToPresent}
-                          datetime={article.node.datetime}
-                        ></Date>
-                      </span>
                     </div>
-                  </div>
+                  </figure>
                 ) : null
               )}
             </div>
@@ -267,7 +232,6 @@ const ArticleTemplate = ({ data }) => (
         </div>
       </div>
     </section>
-    <Footer sports={data.allStrapiSport.edges} />
   </>
 );
 

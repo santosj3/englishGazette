@@ -92,7 +92,7 @@ const ArticleTemplate = ({ data }) => (
       "dateModified": "${data.strapiArticle.dateToGoogle}",
       "author": {
         "@type": "Person",
-        "name": "João Santos",
+        "name": "Carlos Santos",
         "url": "${CANNONNICAL_URL}"
       },
       "publisher": {
@@ -233,7 +233,9 @@ const ArticleTemplate = ({ data }) => (
               {data?.lastArticles?.edges.map((article) =>
                 article.node.id !== data.strapiArticle.id ? (
                   <Link
-                    to={article.node.url} class="gazette-single-todays-post d-md-flex align-items-start mb-50">
+                    to={article.node.url}
+                    class="gazette-single-todays-post d-md-flex align-items-start mb-50"
+                  >
                     <div
                       class="image-single-post-mobile"
                       style={{ marginRight: "2%", width: "30%" }}

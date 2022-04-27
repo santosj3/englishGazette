@@ -72,7 +72,12 @@ const NotFoundPage = ({ data }) => {
             <div class="row h-100 align-items-end">
               <div class="col-12">
                 <div class="single-post-title-content">
-                  <h2 class="font-pt">404 - Página Não encontrada</h2>
+                  <h2
+                    style={{ color: "white", paddingTop: "148px" }}
+                    class="font-pt"
+                  >
+                    404 - Página Não encontrada
+                  </h2>
                 </div>
               </div>
             </div>
