@@ -183,6 +183,7 @@ const ArticleTemplate = ({ data }) => (
                     .replaceAll("<div<", "<")
                     .replaceAll("</div<", "<")
                     .replaceAll("<style>", "<div className='erro-estilo'>")
+                    .replaceAll('loading="lazy"', " ")
                     .replaceAll("</style>", "</div>"),
                 }}
               ></div>
