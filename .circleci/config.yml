@@ -26,3 +26,21 @@ jobs:
       - run:
           name: Firebase Deploy
           command: ./node_modules/.bin/firebase deploy --token "1//03IuD6uYCZA1xCgYIARAAGAMSNwF-L9IroKks2IJoaFOtc3smMadPJ08bEQ5PKAoI7P4_-IJi_2VOKj6b0ZMNkU0NB5NKyRQVLpQ"
+
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - build
+  schedule-workflow:
+    triggers:
+      - schedule:
+        cron: "0 * * * *"
+        filters:
+          branches:
+            only:
+              - master
+    jobs:
+      - build
+      - deploy
+      
