@@ -9,7 +9,13 @@ import { Helmet } from "react-helmet";
 const ArticleTemplate = ({ data }) => (
   <>
     <Header sports={data.allStrapiSport.edges} />
-    <Helmet title={data.strapiArticle.title} titleTemplate={"%s"}>
+    <Helmet
+      title={data.strapiArticle.title}
+      titleTemplate={"%s"}
+      htmlAttributes={{
+        lang: "pt-BR",
+      }}
+    >
       <meta name="description" content={data.strapiArticle.description} />
       <meta name="image" content={data.strapiArticle.cover} />
       <meta property="og:url" content={data.strapiArticle.url} />

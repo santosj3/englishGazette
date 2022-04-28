@@ -14,7 +14,13 @@ import { CANNONNICAL_URL, STYLE_URL } from "../utils/Constants";
 const IndexPage = ({ data }) => (
   <>
     <Header sports={data.allStrapiSport.edges} />
-    <Helmet title="Gazeta Esportiva" titleTemplate={"%s"}>
+    <Helmet
+      title="Gazeta Esportiva"
+      titleTemplate={"%s"}
+      htmlAttributes={{
+        lang: "pt-BR",
+      }}
+    >
       <meta name="description" content={`Tudo sobre desporto motorizado`} />
       <meta name="image" content={Logo} />
       <meta property="og:url" content={CANNONNICAL_URL} />

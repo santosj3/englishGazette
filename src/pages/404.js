@@ -16,7 +16,13 @@ const NotFoundPage = ({ data }) => {
   return (
     <>
       <Header sports={data.allStrapiSport.edges} />
-      <Helmet title="Gazeta Esportiva" titleTemplate={"%s"}>
+      <Helmet
+        title="Gazeta Esportiva"
+        titleTemplate={"%s"}
+        htmlAttributes={{
+          lang: "pt-BR",
+        }}
+      >
         <meta name="description" content={`Tudo sobre desporto motorizado`} />
         <meta name="image" content={Logo} />
         <meta property="og:type" content="website" />

@@ -8,7 +8,13 @@ import { Helmet } from "react-helmet";
 const ArticleTemplate = ({ data }) => (
   <>
     <AmpHeader sports={data.allStrapiSport.edges} />
-    <Helmet title={data.strapiArticle.title} titleTemplate={"%s"}>
+    <Helmet
+      title={data.strapiArticle.title}
+      titleTemplate={"%s"}
+      htmlAttributes={{
+        lang: "pt-BR",
+      }}
+    >
       <meta name="description" content={data.strapiArticle.description} />
       <meta name="image" content={data.strapiArticle.cover} />
       <meta property="og:url" content={data.strapiArticle.url} />
@@ -174,7 +180,10 @@ const ArticleTemplate = ({ data }) => (
               {data?.relatedArticle?.edges.map((article) =>
                 article.node.id !== data.strapiArticle.id ? (
                   <figure class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                     <Link to={article.node.url} style={{ marginRight: "2%", width: "30%" }}>
+                    <Link
+                      to={article.node.url}
+                      style={{ marginRight: "2%", width: "30%" }}
+                    >
                       <amp-img
                         width="300"
                         height="190"
@@ -203,7 +212,8 @@ const ArticleTemplate = ({ data }) => (
               {data?.lastArticles?.edges.map((article) =>
                 article.node.id !== data.strapiArticle.id ? (
                   <figure class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                    <Link to={article.node.url}
+                    <Link
+                      to={article.node.url}
                       class="image-single-post-mobile"
                       style={{ marginRight: "2%", width: "30%" }}
                     >

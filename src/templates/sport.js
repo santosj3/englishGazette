@@ -14,7 +14,13 @@ const SportTemplate = ({ data, pageContext }) => {
   return (
     <>
       <Header sports={data.allStrapiSport.edges} />
-      <Helmet title={data.strapiSport.name} titleTemplate={"Gazeta - %s"}>
+      <Helmet
+        title={data.strapiSport.name}
+        titleTemplate={"Gazeta - %s"}
+        htmlAttributes={{
+          lang: "pt-BR",
+        }}
+      >
         <meta
           name="description"
           content={`Tudo sobre ${data.strapiSport.name}`}
