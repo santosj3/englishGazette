@@ -22,4 +22,5 @@ export const LOGO_SPORTS=[
 ]
 
 //Librarys
-export const STYLE_URL = "";
+export const STYLE_URL =
+  "https://res.cloudinary.com/rosanjeans/raw/upload/v1650307973/styles_sngzrt.css";
