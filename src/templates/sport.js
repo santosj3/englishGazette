@@ -21,10 +21,26 @@ const SportTemplate = ({ data, pageContext }) => {
           lang: "pt-BR",
         }}
       >
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-DNYR5XDG2H"
+        ></script>
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DNYR5XDG2H');`}
+        </script>
+        <meta
+          name="google-site-verification"
+          content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
+        />
         <meta
           name="description"
           content={`Tudo sobre ${data.strapiSport.name}`}
         />
+        <meta name="msvalidate.01" content="05531788A36D9ACC3B731D1C81E82CB2" />
         <meta name="image" content={logo} />
         <meta
           property="og:url"

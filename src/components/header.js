@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import Logo from "../assets/img/core-img/logo.png";
 import "../assets/css/dropdown.css";
+import "../assets/css/final.css";
 
 const Header = ({ sports }) => (
   <header class="header-area">

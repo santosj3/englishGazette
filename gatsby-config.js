@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `new`,
-    siteUrl: "http://localhost:9000",
+    siteUrl: "https://gazetaesportesmotor.web.app",
   },
   plugins: [
     "gatsby-plugin-advanced-sitemap",
@@ -25,7 +25,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-amp`,
       options: {
-        canonicalBaseUrl: "http://localhost:9000",
+        canonicalBaseUrl: "https://gazetaesportesmotor.web.app",
         components: [],
         excludedPaths: ["/404*", "/"],
         pathIdentifier: "/amp",
@@ -36,8 +36,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "http://localhost:9000",
-        sitemap: "http://localhost:9000/sitemap.xml",
+        host: "https://gazetaesportesmotor.web.app",
+        sitemap: "https://gazetaesportesmotor.web.app/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },

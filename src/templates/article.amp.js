@@ -15,6 +15,26 @@ const ArticleTemplate = ({ data }) => (
         lang: "pt-BR",
       }}
     >
+      <meta
+        name="google-site-verification"
+        content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
+      />
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-DNYR5XDG2H"
+      ></script>
+      <script>
+        {`window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DNYR5XDG2H');`}
+      </script>
+      <meta
+        name="google-site-verification"
+        content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
+      />
+      <meta name="msvalidate.01" content="05531788A36D9ACC3B731D1C81E82CB2" />
       <meta name="description" content={data.strapiArticle.description} />
       <meta name="image" content={data.strapiArticle.cover} />
       <meta property="og:url" content={data.strapiArticle.url} />
