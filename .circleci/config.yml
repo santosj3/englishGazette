@@ -18,7 +18,7 @@ jobs:
           command: npm install
       - run:
           name: Gatsby
-          command: npm install -g gatsby-cli
+          command: sudo npm install -g gatsby-cli
       - save_cache:
           key: v1-npm-deps-{{ checksum "package-lock.json" }}
           paths:
