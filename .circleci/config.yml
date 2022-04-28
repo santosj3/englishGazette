@@ -13,6 +13,9 @@ jobs:
             - v1-npm-deps-{{ checksum "package-lock.json" }}
             # Fallback cache to be used
             - v1-npm-deps-
+       - run:
+          name: Install gatsby
+          command: npm install gatsby-cli 
       - run:
           name: Install Dependencies
           command: npm install
