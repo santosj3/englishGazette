@@ -19,7 +19,7 @@ const ArticleTemplate = ({ data }) => (
   <>
     <Header sports={data.allStrapiSport.edges} />
     <Helmet
-      title={data.strapiArticle.title}
+      title={data.strapiOriginalArticle.title}
       titleTemplate={"%s"}
       htmlAttributes={{
         lang: LANGUAGE,
@@ -40,24 +40,33 @@ const ArticleTemplate = ({ data }) => (
       <script>
         {`(function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "bo771inyeh");`}
       </script>
-      <meta name="description" content={data.strapiArticle.description} />
-      <meta name="image" content={data.strapiArticle.cover} />
-      <meta property="og:url" content={data.strapiArticle.url} />
+      <meta
+        name="description"
+        content={data.strapiOriginalArticle.description}
+      />
+      <meta name="image" content={data.strapiOriginalArticle.mainImage} />
+      <meta property="og:url" content={data.strapiOriginalArticle.url} />
       <meta property="og:type" content="article" />
       <meta property="og:locale" content={LOCALE} />
-      <meta property="og:title" content={data.strapiArticle.title} />
+      <meta property="og:title" content={data.strapiOriginalArticle.title} />
       <meta
         property="og:description"
-        content={data.strapiArticle.description}
+        content={data.strapiOriginalArticle.description}
       />
-      <meta property="og:image" content={data.strapiArticle.cover} />
+      <meta
+        property="og:image"
+        content={data.strapiOriginalArticle.mainImage}
+      />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={data.strapiArticle.title} />
+      <meta name="twitter:title" content={data.strapiOriginalArticle.title} />
       <meta
         name="twitter:description"
-        content={data.strapiArticle.description}
+        content={data.strapiOriginalArticle.description}
       />
-      <meta name="twitter:image" content={data.strapiArticle.cover} />
+      <meta
+        name="twitter:image"
+        content={data.strapiOriginalArticle.mainImage}
+      />
       <link rel="stylesheet" href={STYLE_URL}></link>
       <link
         rel="icon"
@@ -85,12 +94,12 @@ const ArticleTemplate = ({ data }) => (
       },{
         "@type": "ListItem",
         "position": 2,
-        "name": "${data.strapiArticle.sport.name}",
-        "item": "${CANNONNICAL_URL}/${data.strapiArticle.sport.slug}"
+        "name": "${data.strapiOriginalArticle.sport.name}",
+        "item": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport.slug}"
       },{
         "@type": "ListItem",
         "position": 3,
-        "name": "${data.strapiArticle.title}"
+        "name": "${data.strapiOriginalArticle.title}"
       }]
     }`}
       </script>
@@ -98,13 +107,13 @@ const ArticleTemplate = ({ data }) => (
         {`{
       "@context": "https://schema.org/",
       "@type": "WebPage",
-      "name": "${data.strapiArticle.title}",
+      "name": "${data.strapiOriginalArticle.title}",
       "speakable":
       {
        "@type": "SpeakableSpecification",
        "cssSelector": ['.titulo-principal', '.conteudo']
        },
-      "url": "${CANNONNICAL_URL}${data.strapiArticle.url}"
+      "url": "${CANNONNICAL_URL}${data.strapiOriginalArticle.url}"
     }`}
       </script>
       <script type="application/ld+json">
@@ -113,14 +122,14 @@ const ArticleTemplate = ({ data }) => (
       "@type": "NewsArticle",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "${CANNONNICAL_URL}${data.strapiArticle.url}"
+        "@id": "${CANNONNICAL_URL}${data.strapiOriginalArticle.url}"
       },
-      "headline": "${data.strapiArticle.title}",
+      "headline": "${data.strapiOriginalArticle.title}",
       "image": [
-        "${data.strapiArticle.cover}"
+        "${data.strapiOriginalArticle.mainImage}"
       ],
-      "datePublished": "${data.strapiArticle.dateToGoogle}",
-      "dateModified": "${data.strapiArticle.dateToGoogle}",
+      "datePublished": "${data.strapiOriginalArticle.dateToGoogle}",
+      "dateModified": "${data.strapiOriginalArticle.dateToGoogle}",
       "author": {
         "@type": "Person",
         "name": "Carlos Santos",
@@ -141,7 +150,7 @@ const ArticleTemplate = ({ data }) => (
       <div
         class="single-post-title bg-img background-overlay"
         style={{
-          backgroundImage: `url("${data.strapiArticle.cover}")`,
+          backgroundImage: `url("${data.strapiOriginalArticle.mainImage}")`,
           minHeight: "150px",
           paddingTop: "2%",
         }}
@@ -151,17 +160,17 @@ const ArticleTemplate = ({ data }) => (
             <div class="col-12">
               <div class="single-post-title-content">
                 <div class="gazette-post-tag">
-                  <Link to={`/${data.strapiArticle.sport.slug}`}>
-                    {data.strapiArticle.sport.name}
+                  <Link to={`/${data.strapiOriginalArticle.sport.slug}`}>
+                    {data.strapiOriginalArticle.sport.name}
                   </Link>
                 </div>
                 <h1 style={{ color: "white" }} class="titulo-principal font-pt">
-                  {data.strapiArticle.title}
+                  {data.strapiOriginalArticle.title}
                 </h1>
                 <p>
                   <Date
-                    date={data.strapiArticle.dateToPresent}
-                    datetime={data.strapiArticle.datetime}
+                    date={data.strapiOriginalArticle.originalDate}
+                    originalDate={data.strapiOriginalArticle.originalDate}
                   ></Date>
                 </p>
               </div>
@@ -175,21 +184,23 @@ const ArticleTemplate = ({ data }) => (
           <div class="row justify-content-center">
             <div class="col-12 col-md-8">
               <div class="descricao single-post-text">
-                <p>{data.strapiArticle.description}</p>
+                <p>{data.strapiOriginalArticle.description}</p>
               </div>
             </div>
             <div class="col-12">
               <div class="single-post-thumb">
                 <img
-                  src={data.strapiArticle.cover}
-                  alt={data.strapiArticle.title}
+                  src={data.strapiOriginalArticle.mainImage}
+                  alt={data.strapiOriginalArticle.title}
                 />
               </div>
             </div>
             <div class="col-12 col-md-8">
               <div
                 class="conteudo single-post-text"
-                dangerouslySetInnerHTML={{ __html: data.strapiArticle.content }}
+                dangerouslySetInnerHTML={{
+                  __html: data.strapiOriginalArticle.content,
+                }}
               ></div>
             </div>
           </div>
@@ -205,11 +216,11 @@ const ArticleTemplate = ({ data }) => (
               <div class="gazette-heading">
                 <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
                   {MORE}
-                  {data.strapiArticle.sport.name}
+                  {data.strapiOriginalArticle.sport.name}
                 </h4>
               </div>
               {data?.relatedArticle?.edges.map((article) =>
-                article.node.id !== data.strapiArticle.id ? (
+                article.node.id !== data.strapiOriginalArticle.id ? (
                   <Link
                     to={article.node.url}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
@@ -220,7 +231,7 @@ const ArticleTemplate = ({ data }) => (
                     >
                       <Image
                         style={{ width: "100%", height: "200px" }}
-                        src={article.node.cover}
+                        src={article.node.mainImage}
                         alt={article.node.title}
                       />
                     </div>
@@ -247,8 +258,8 @@ const ArticleTemplate = ({ data }) => (
                         style={{ float: "right" }}
                       >
                         <Date
-                          date={article.node.dateToPresent}
-                          datetime={article.node.datetime}
+                          date={article.node.originalDate}
+                          originalDate={article.node.originalDate}
                         ></Date>
                       </span>
                     </div>
@@ -263,7 +274,7 @@ const ArticleTemplate = ({ data }) => (
                 </h4>
               </div>
               {data?.lastArticles?.edges.map((article) =>
-                article.node.id !== data.strapiArticle.id ? (
+                article.node.id !== data.strapiOriginalArticle.id ? (
                   <Link
                     to={article.node.url}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
@@ -274,7 +285,7 @@ const ArticleTemplate = ({ data }) => (
                     >
                       <Image
                         style={{ width: "100%", height: "200px" }}
-                        src={article.node.cover}
+                        src={article.node.mainImage}
                         alt={article.node.title}
                       />
                     </div>
@@ -301,8 +312,8 @@ const ArticleTemplate = ({ data }) => (
                         style={{ float: "right" }}
                       >
                         <Date
-                          date={article.node.dateToPresent}
-                          datetime={article.node.datetime}
+                          date={article.node.originalDate}
+                          originalDate={article.node.originalDate}
                         ></Date>
                       </span>
                     </div>
@@ -318,21 +329,19 @@ const ArticleTemplate = ({ data }) => (
   </>
 );
 
-export default ArticleTemplate
+export default ArticleTemplate;
 
 export const query = graphql`
-  query ArticleTemplate($id: String!,$sportId: String! ) {
-    strapiArticle(id: {eq: $id}) {
+  query ArticleTemplate($id: String!, $sportId: String!) {
+    strapiOriginalArticle(id: { eq: $id }) {
       id
       title
-      cover
+      mainImage
       description
       content
       date
-      dateToPresent
-      datetime
-      dateToGoogle
-      sport{
+      originalDate
+      sport {
         id
         name
         slug
@@ -347,46 +356,43 @@ export const query = graphql`
         }
       }
     }
-    relatedArticle: allStrapiArticle(
-      filter: {language: {id: {eq: "625279e89ec5232714eef52d"}}, sport: {id: {eq: $sportId}}}
+    relatedArticle: allStrapiOriginalArticle(
+      filter: { sport: { id: { eq: $sportId } } }
       limit: 6
-      sort: {fields: createdAt, order: DESC}
+      sort: { fields: createdAt, order: DESC }
     ) {
       edges {
         node {
           id
           title
-          url
-          cover
+          urlTitle
+          mainImage
           description
           content
           date
-          dateToPresent
-          datetime
-          sport{
+          originalDate
+          sport {
             name
             slug
           }
         }
       }
     }
-    lastArticles: allStrapiArticle(
-      filter: {language: {id: {eq: "625279e89ec5232714eef52d"}}}
+    lastArticles: allStrapiOriginalArticle(
       limit: 10
-      sort: {fields: createdAt, order: DESC}
+      sort: { fields: createdAt, order: DESC }
     ) {
       edges {
         node {
           id
           title
-          url
-          cover
+          urlTitle
+          mainImage
           description
           content
           date
-          dateToPresent
-          datetime
-          sport{
+          originalDate
+          sport {
             name
             slug
           }
@@ -394,4 +400,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

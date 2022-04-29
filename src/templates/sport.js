@@ -134,7 +134,7 @@ const SportTemplate = ({ data, pageContext }) => {
           <div class="row">
             <div class="col-12 col-lg-12">
               <div class="gazette-todays-post ">
-                {data?.allStrapiArticle?.edges.map((article) => (
+                {data?.allStrapiOriginalArticle?.edges.map((article) => (
                   <Link
                     to={article.node.url}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
@@ -145,7 +145,7 @@ const SportTemplate = ({ data, pageContext }) => {
                     >
                       <Image
                         style={{ width: "100%", height: "180px" }}
-                        src={article.node.cover}
+                        src={article.node.mainImage}
                         alt={article.node.title}
                       />
                     </div>
@@ -175,8 +175,8 @@ const SportTemplate = ({ data, pageContext }) => {
                         style={{ float: "right" }}
                       >
                         <Date
-                          date={article.node.dateToPresent}
-                          datetime={article.node.datetime}
+                          date={article.node.originalDate}
+                          originalDate={article.node.originalDate}
                         ></Date>
                       </span>
                     </div>
@@ -310,12 +310,7 @@ const SportTemplate = ({ data, pageContext }) => {
 export default SportTemplate;
 
 export const query = graphql`
-  query SportTemplate(
-    $id: String!
-    $articleSportId: String!
-    $limit: Int!
-    $skip: Int!
-  ) {
+  query SportTemplate($id: String!, $limit: Int!, $skip: Int!) {
     strapiSport(id: { eq: $id }) {
       id
       name
@@ -330,26 +325,24 @@ export const query = graphql`
         }
       }
     }
-    allStrapiArticle(
-      filter: { sport: { id: { eq: $articleSportId } } }
+    allStrapiOriginalArticle(
       limit: $limit
       skip: $skip
-      sort: { fields: createdAt, order: DESC }
+      sort: { fields: date, order: DESC }
     ) {
       edges {
         node {
           id
-          url
+          urlTitle
           title
           date
-          dateToPresent
-          datetime
+          originalDate
           sport {
             id
             name
             slug
           }
-          cover
+          mainImage
         }
       }
     }

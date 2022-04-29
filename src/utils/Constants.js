@@ -8,18 +8,18 @@ export const SPORT_COLLECTION='sport';
 export const ARTICLE_COLLECTION='original-article';
 
 //LOCALE
-export const LOCALE_CODE='pt-BR';
-export const LANGUAGE_ID='625279e89ec5232714eef52d';
+export const LOCALE_CODE = "en-US";
+export const LANGUAGE_ID = "625279e89ec5232714eef52d";
 
 //LABELS
-export const LOCALE='pt_BR';
-export const LANGUAGE='pt-BR';
-export const TITLE='Gazeta Esportiva';
-export const DESCRIPTION='Tudo sobre desporto motorizado';
-export const LAST='Últimas';
-export const ANALYTICS='G-DNYR5XDG2H';
-export const ERROR_TITLE='404 - Página Não encontrada';
-export const MORE='Mais de ';
+export const LOCALE = "en_US";
+export const LANGUAGE = "en-US";
+export const TITLE = "Sports Gazette";
+export const DESCRIPTION = "All about motorsport";
+export const LAST = "Last News";
+export const ANALYTICS = "G-DNYR5XDG2H";
+export const ERROR_TITLE = "404 - page not found";
+export const MORE = "More of ";
 
 
 

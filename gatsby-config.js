@@ -18,7 +18,7 @@ module.exports = {
       options: {
         apiURL: "https://f1gazetabe.herokuapp.com",
         queryLimit: 1000, // Defaults to 100
-        collectionTypes: ["sport", "article"],
+        collectionTypes: ["sport", "original-article"],
         singleTypes: [],
       },
     },

@@ -122,7 +122,7 @@ const NotFoundPage = ({ data }) => {
                     {LAST}
                   </h4>
                 </div>
-                {data?.allStrapiArticle?.edges.map((article) => (
+                {data?.allStrapiOriginalArticle?.edges.map((article) => (
                   <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
                     <div
                       class="image-single-post-mobile"
@@ -130,7 +130,7 @@ const NotFoundPage = ({ data }) => {
                     >
                       <Image
                         style={{ width: "100%", height: "180px" }}
-                        src={article.node.cover}
+                        src={article.node.mainImage}
                         alt={article.node.title}
                       />
                     </div>
@@ -145,7 +145,7 @@ const NotFoundPage = ({ data }) => {
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
                         <Link
-                          to={article.node.url}
+                          to={article.node.urlTitle}
                           style={{ fontWeight: 400, fontSize: "25px" }}
                           class="font-pt"
                         >
@@ -156,7 +156,7 @@ const NotFoundPage = ({ data }) => {
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
-                        <Date date={article.node.date}></Date>
+                        <Date date={article.node.originalDate}></Date>
                       </span>
                     </div>
                   </div>
@@ -171,24 +171,26 @@ const NotFoundPage = ({ data }) => {
   );
 };
 
-export default NotFoundPage
+export default NotFoundPage;
 
 export const pageQuery = graphql`
   query NotFoundQuery {
-    allStrapiArticle(
-      filter: {language: {id: {eq: "625279e89ec5232714eef52d"}}}
+    allStrapiOriginalArticle(
       limit: 40
-      sort: {fields: createdAt, order: DESC}
+      sort: { fields: createdAt, order: DESC }
     ) {
       edges {
         node {
-          title
-          url
-          cover
-          description
-          content
+          mainImage
           date
-          sport{
+          createdAt
+          originalDate
+          description
+          id
+          urlTitle
+          title
+          sport {
+            id
             name
             slug
           }
@@ -203,6 +205,6 @@ export const pageQuery = graphql`
           slug
         }
       }
-    }   
+    }
   }
-`
+`;
