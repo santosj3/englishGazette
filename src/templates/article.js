@@ -9,6 +9,7 @@ import {
   ANALYTICS,
   TITLE,
   LANGUAGE,
+  LOCALE,
   LAST,
   CANNONNICAL_URL,
   STYLE_URL,

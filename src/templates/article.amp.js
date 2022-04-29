@@ -4,15 +4,12 @@ import AmpHeader from "../components/ampHeader";
 import Date from "../components/date";
 
 import {
-  ERROR_TITLE,
-  LOCALE,
   MORE,
   ANALYTICS,
   TITLE,
   LANGUAGE,
   LAST,
   CANNONNICAL_URL,
-  STYLE_URL,
 } from "../utils/Constants";
 
 import { Helmet } from "react-helmet";

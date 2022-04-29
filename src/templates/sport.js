@@ -4,13 +4,16 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
 import Date from '../components/date'
-import { Helmet } from "react-helmet"
+import Next from "../assets/img/core-img/next.png";
+import Previous from "../assets/img/core-img/left.png";
+import "../assets/css/pagination.css";
+import { Helmet } from "react-helmet";
 import {
-  MORE,
+  LOCALE,
   ANALYTICS,
   TITLE,
   LANGUAGE,
-  LAST,
+  LOGO_SPORTS,
   CANNONNICAL_URL,
   STYLE_URL,
 } from "../utils/Constants";
@@ -200,7 +203,12 @@ const SportTemplate = ({ data, pageContext }) => {
                             }
                             aria-label="Previous"
                           >
-                            <i class="fa fa-angle-left"></i>
+                            <img
+                              loading="lazy"
+                              style={{ filter: "invert(1)" }}
+                              src={Previous}
+                              alt="Previous"
+                            />
                           </Link>
                         </li>
                       )}
@@ -273,11 +281,16 @@ const SportTemplate = ({ data, pageContext }) => {
                         <li class="page-item">
                           <Link
                             activeClassName="page-link"
-                            class="page-link"
+                            class="page-link next"
                             to={`/${data.strapiSport.slug}/${currentPage + 1}`}
                             aria-label="Next"
                           >
-                            <i class="fa fa-angle-right"></i>
+                            <img
+                              loading="lazy"
+                              style={{ filter: "invert(1)" }}
+                              src={Next}
+                              alt="Next"
+                            />
                           </Link>
                         </li>
                       )}

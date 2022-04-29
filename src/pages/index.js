@@ -10,7 +10,6 @@ import Footer from '../components/footer'
 import { Helmet } from "react-helmet"
 
 import {
-  ERROR_TITLE,
   LOCALE,
   DESCRIPTION,
   ANALYTICS,
