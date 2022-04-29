@@ -2,7 +2,19 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import AmpHeader from "../components/ampHeader";
 import Date from "../components/date";
-import { CANNONNICAL_URL } from "../utils/Constants";
+
+import {
+  ERROR_TITLE,
+  LOCALE,
+  MORE,
+  ANALYTICS,
+  TITLE,
+  LANGUAGE,
+  LAST,
+  CANNONNICAL_URL,
+  STYLE_URL,
+} from "../utils/Constants";
+
 import { Helmet } from "react-helmet";
 
 const ArticleTemplate = ({ data }) => (
@@ -12,33 +24,24 @@ const ArticleTemplate = ({ data }) => (
       title={data.strapiArticle.title}
       titleTemplate={"%s"}
       htmlAttributes={{
-        lang: "pt-BR",
+        lang: LANGUAGE,
       }}
     >
-      <meta http-equiv="content-language" content="pt-BR" />
-      <meta
-        name="google-site-verification"
-        content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
-      />
+      <meta http-equiv="content-language" content={LANGUAGE} />
       <script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-DNYR5XDG2H"
+        src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`}
       ></script>
       <script>
         {`window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-DNYR5XDG2H');`}
+        gtag('config', '${ANALYTICS}');`}
       </script>
       <script>
         {`(function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "bo771inyeh");`}
       </script>
-      <meta
-        name="google-site-verification"
-        content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
-      />
-      <meta name="msvalidate.01" content="05531788A36D9ACC3B731D1C81E82CB2" />
       <meta name="description" content={data.strapiArticle.description} />
       <meta name="image" content={data.strapiArticle.cover} />
       <meta property="og:url" content={data.strapiArticle.url} />
@@ -62,7 +65,7 @@ const ArticleTemplate = ({ data }) => (
           "@context": "https://schema.org",
           "@type": "Organization",
           "url": "${CANNONNICAL_URL}",
-          "name": "Gazeta Esportiva",          
+          "name": "${TITLE}",        
         }
       `}
       </script>
@@ -121,7 +124,7 @@ const ArticleTemplate = ({ data }) => (
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Gazeta Esportiva",
+        "name": "${TITLE}",
         "logo": {
           "@type": "ImageObject",
           "url": "https://res.cloudinary.com/rosanjeans/image/upload/v1649834225/logo_bhhm4j.png"
@@ -200,7 +203,10 @@ const ArticleTemplate = ({ data }) => (
           <div class="col-12 col-lg-12">
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
-                <h4>Mais de {data.strapiArticle.sport.name}</h4>
+                <h4>
+                  {MORE}
+                  {data.strapiArticle.sport.name}
+                </h4>
               </div>
               {data?.relatedArticle?.edges.map((article) =>
                 article.node.id !== data.strapiArticle.id ? (
@@ -232,7 +238,7 @@ const ArticleTemplate = ({ data }) => (
             </div>
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
-                <h4>Últimas</h4>
+                <h4>{LAST}</h4>
               </div>
               {data?.lastArticles?.edges.map((article) =>
                 article.node.id !== data.strapiArticle.id ? (

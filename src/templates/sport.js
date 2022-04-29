@@ -5,7 +5,15 @@ import Footer from '../components/footer'
 import Image from '../components/image'
 import Date from '../components/date'
 import { Helmet } from "react-helmet"
-import { LOGO_SPORTS, CANNONNICAL_URL, STYLE_URL } from "../utils/Constants";
+import {
+  MORE,
+  ANALYTICS,
+  TITLE,
+  LANGUAGE,
+  LAST,
+  CANNONNICAL_URL,
+  STYLE_URL,
+} from "../utils/Constants";
 const SportTemplate = ({ data, pageContext }) => {
   const logo = LOGO_SPORTS.find(
     (item) => item.id === data.strapiSport.slug
@@ -16,30 +24,26 @@ const SportTemplate = ({ data, pageContext }) => {
       <Header sports={data.allStrapiSport.edges} />
       <Helmet
         title={data.strapiSport.name}
-        titleTemplate={"Gazeta - %s"}
+        titleTemplate={`${TITLE} - %s`}
         htmlAttributes={{
-          lang: "pt-BR",
+          lang: LANGUAGE,
         }}
       >
-        <meta http-equiv="content-language" content="pt-BR" />
+        <meta http-equiv="content-language" content={LANGUAGE} />
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-DNYR5XDG2H"
+          src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`}
         ></script>
         <script>
           {`window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-DNYR5XDG2H');`}
+        gtag('config', '${ANALYTICS}');`}
         </script>
         <script>
           {`(function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "bo771inyeh");`}
         </script>
-        <meta
-          name="google-site-verification"
-          content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
-        />
         <meta
           name="description"
           content={`Tudo sobre ${data.strapiSport.name}`}
@@ -51,7 +55,7 @@ const SportTemplate = ({ data, pageContext }) => {
           content={`${CANNONNICAL_URL}/${data.strapiSport.slug}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:locale" content={LOCALE} />
         <meta property="og:title" content={data.strapiSport.name} />
         <meta
           property="og:description"
@@ -76,7 +80,7 @@ const SportTemplate = ({ data, pageContext }) => {
           "@context": "https://schema.org",
           "@type": "Organization",
           "url": "${CANNONNICAL_URL}",
-          "name": "Gazeta Esportiva",          
+          "name": "${TITLE}",          
         }
       `}
         </script>

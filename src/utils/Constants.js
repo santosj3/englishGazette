@@ -11,6 +11,18 @@ export const ARTICLE_COLLECTION='original-article';
 export const LOCALE_CODE='pt-BR';
 export const LANGUAGE_ID='625279e89ec5232714eef52d';
 
+//LABELS
+export const LOCALE='pt_BR';
+export const LANGUAGE='pt-BR';
+export const TITLE='Gazeta Esportiva';
+export const DESCRIPTION='Tudo sobre desporto motorizado';
+export const LAST='Últimas';
+export const ANALYTICS='G-DNYR5XDG2H';
+export const ERROR_TITLE='404 - Página Não encontrada';
+export const MORE='Mais de ';
+
+
+
 //LOGOTIPOS
 export const LOGO_SPORTS=[
     {id:"formula-1", url: "https://res.cloudinary.com/rosanjeans/image/upload/v1649748416/formula-1_ce4ijm.png"},

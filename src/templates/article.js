@@ -4,7 +4,15 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
 import Date from '../components/date'
-import { CANNONNICAL_URL, STYLE_URL } from "../utils/Constants";
+import {
+  MORE,
+  ANALYTICS,
+  TITLE,
+  LANGUAGE,
+  LAST,
+  CANNONNICAL_URL,
+  STYLE_URL,
+} from "../utils/Constants";
 import { Helmet } from "react-helmet";
 const ArticleTemplate = ({ data }) => (
   <>
@@ -13,38 +21,34 @@ const ArticleTemplate = ({ data }) => (
       title={data.strapiArticle.title}
       titleTemplate={"%s"}
       htmlAttributes={{
-        lang: "pt-BR",
+        lang: LANGUAGE,
       }}
     >
-      <meta http-equiv="content-language" content="pt-BR" />
+      <meta http-equiv="content-language" content={LANGUAGE} />
       <script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-DNYR5XDG2H"
+        src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`}
       ></script>
       <script>
         {`window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-DNYR5XDG2H');`}
+        gtag('config', '${ANALYTICS}');`}
       </script>
       <script>
         {`(function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "bo771inyeh");`}
       </script>
-      <meta
-        name="google-site-verification"
-        content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
-      />
       <meta name="description" content={data.strapiArticle.description} />
       <meta name="image" content={data.strapiArticle.cover} />
       <meta property="og:url" content={data.strapiArticle.url} />
       <meta property="og:type" content="article" />
+      <meta property="og:locale" content={LOCALE} />
       <meta property="og:title" content={data.strapiArticle.title} />
       <meta
         property="og:description"
         content={data.strapiArticle.description}
       />
-      <meta name="msvalidate.01" content="05531788A36D9ACC3B731D1C81E82CB2" />
       <meta property="og:image" content={data.strapiArticle.cover} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={data.strapiArticle.title} />
@@ -64,7 +68,7 @@ const ArticleTemplate = ({ data }) => (
           "@context": "https://schema.org",
           "@type": "Organization",
           "url": "${CANNONNICAL_URL}",
-          "name": "Gazeta Esportiva",          
+          "name": "${TITLE}",          
         }
       `}
       </script>
@@ -123,7 +127,7 @@ const ArticleTemplate = ({ data }) => (
       },
       "publisher": {
         "@type": "Organization",
-        "name": "Gazeta Esportiva",
+        "name": "${TITLE}",
         "logo": {
           "@type": "ImageObject",
           "url": "https://res.cloudinary.com/rosanjeans/image/upload/v1649834225/logo_bhhm4j.png"
@@ -199,7 +203,8 @@ const ArticleTemplate = ({ data }) => (
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
                 <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
-                  Mais de {data.strapiArticle.sport.name}
+                  {MORE}
+                  {data.strapiArticle.sport.name}
                 </h4>
               </div>
               {data?.relatedArticle?.edges.map((article) =>
@@ -253,7 +258,7 @@ const ArticleTemplate = ({ data }) => (
             <div class="gazette-todays-post ">
               <div class="gazette-heading">
                 <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
-                  Últimas
+                  {LAST}
                 </h4>
               </div>
               {data?.lastArticles?.edges.map((article) =>
