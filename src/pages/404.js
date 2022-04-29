@@ -23,6 +23,7 @@ const NotFoundPage = ({ data }) => {
           lang: "pt-BR",
         }}
       >
+        <meta http-equiv="content-language" content="pt-BR" />
         <meta
           name="google-site-verification"
           content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"

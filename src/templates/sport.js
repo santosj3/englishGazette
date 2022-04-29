@@ -21,6 +21,7 @@ const SportTemplate = ({ data, pageContext }) => {
           lang: "pt-BR",
         }}
       >
+        <meta http-equiv="content-language" content="pt-BR" />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-DNYR5XDG2H"

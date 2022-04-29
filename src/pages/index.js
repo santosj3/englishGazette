@@ -21,6 +21,7 @@ const IndexPage = ({ data }) => (
         lang: "pt-BR",
       }}
     >
+      <meta http-equiv="content-language" content="pt-BR" />
       <meta
         name="google-site-verification"
         content="rSyIix3thcMTM9NDtS7DsAVbA9Tzpn48KcQWIdiBOGc"
@@ -50,6 +51,7 @@ const IndexPage = ({ data }) => (
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="pt_BR" />
       <meta property="og:title" content="Gazeta Esportiva" />
+      <title>Gazeta Esportiva</title>
       <meta
         property="og:description"
         content={`Tudo sobre desporto motorizado`}
