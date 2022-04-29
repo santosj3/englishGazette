@@ -25,7 +25,7 @@ jobs:
           command: ./node_modules/.bin/gatsby build
       - run:
           name: Firebase Deploy
-          command: ./node_modules/.bin/firebase deploy --token "1//03IuD6uYCZA1xCgYIARAAGAMSNwF-L9IroKks2IJoaFOtc3smMadPJ08bEQ5PKAoI7P4_-IJi_2VOKj6b0ZMNkU0NB5NKyRQVLpQ"
+          command: ./node_modules/.bin/firebase deploy --token "1//03yRzJR36qvPeCgYIARAAGAMSNwF-L9Ir1rv7ogHVpol83ab9en31ZevyJM2xn5wclNW1evdRzEUrVe3AbJHXg0PfW70jU3DRUWc"
 
 workflows:
   version: 2
