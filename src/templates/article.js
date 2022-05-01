@@ -45,7 +45,10 @@ const ArticleTemplate = ({ data }) => (
         content={data.strapiOriginalArticle.description}
       />
       <meta name="image" content={data.strapiOriginalArticle.mainImage} />
-      <meta property="og:url" content={data.strapiOriginalArticle.id} />
+      <meta
+        property="og:url"
+        content={`${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`}
+      />
       <meta property="og:type" content="article" />
       <meta property="og:locale" content={LOCALE} />
       <meta property="og:title" content={data.strapiOriginalArticle.title} />
@@ -113,7 +116,7 @@ const ArticleTemplate = ({ data }) => (
        "@type": "SpeakableSpecification",
        "cssSelector": ['.titulo-principal', '.conteudo']
        },
-      "url": "${CANNONNICAL_URL}${data.strapiOriginalArticle.id}"
+      "url": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}"
     }`}
       </script>
       <script type="application/ld+json">
@@ -122,7 +125,7 @@ const ArticleTemplate = ({ data }) => (
       "@type": "NewsArticle",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "${CANNONNICAL_URL}${data.strapiOriginalArticle.id}"
+        "@id": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}"
       },
       "headline": "${data.strapiOriginalArticle.title}",
       "image": [
@@ -222,7 +225,7 @@ const ArticleTemplate = ({ data }) => (
               {data?.relatedArticle?.edges.map((article) =>
                 article.node.id !== data.strapiOriginalArticle.id ? (
                   <Link
-                    to={article.node.id}
+                    to={`/${article.node.urlTitle}`}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
                   >
                     <div
@@ -246,7 +249,7 @@ const ArticleTemplate = ({ data }) => (
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
                         <Link
-                          to={article.node.id}
+                          to={`${article.node.urlTitle}`}
                           style={{ fontWeight: 400, fontSize: "25px" }}
                           class="font-pt"
                         >
@@ -276,7 +279,7 @@ const ArticleTemplate = ({ data }) => (
               {data?.lastArticles?.edges.map((article) =>
                 article.node.id !== data.strapiOriginalArticle.id ? (
                   <Link
-                    to={article.node.id}
+                    to={`${article.node.urlTitle}`}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
                   >
                     <div
@@ -300,7 +303,7 @@ const ArticleTemplate = ({ data }) => (
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
                         <Link
-                          to={article.node.id}
+                          to={`/${article.node.urlTitle}`}
                           style={{ fontWeight: 400, fontSize: "25px" }}
                           class="font-pt"
                         >

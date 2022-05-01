@@ -136,7 +136,7 @@ const SportTemplate = ({ data, pageContext }) => {
               <div class="gazette-todays-post ">
                 {data?.allStrapiOriginalArticle?.edges.map((article) => (
                   <Link
-                    to={article.node.id}
+                    to={`/${article.node.urlTitle}`}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
                   >
                     <div
@@ -163,7 +163,7 @@ const SportTemplate = ({ data, pageContext }) => {
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
                         <Link
-                          to={article.node.id}
+                          to={`/${article.node.urlTitle}`}
                           style={{ fontWeight: 400, fontSize: "25px" }}
                           class="font-pt"
                         >

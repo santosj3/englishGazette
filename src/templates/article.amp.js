@@ -41,6 +41,15 @@ const ArticleTemplate = ({ data }) => {
     },
   };
 
+  const ANALYTICS_SCRIPT = {
+    vars: {
+      gtag_id: ANALYTICS,
+      config: {
+        ANALYTICS: { groups: "default" },
+      },
+    },
+  };
+
   return (
     <>
       <AmpHeader sports={data.allStrapiSport.edges} />
@@ -52,26 +61,15 @@ const ArticleTemplate = ({ data }) => {
         }}
       >
         <meta http-equiv="content-language" content={LANGUAGE} />
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS}`}
-        ></script>
-        <script>
-          {`window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '${ANALYTICS}');`}
-        </script>
-        <script>
-          {`(function(c,l,a,r,i,t,y){        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);    })(window, document, "clarity", "script", "bo771inyeh");`}
-        </script>
         <meta
           name="description"
           content={data.strapiOriginalArticle.description}
         />
         <meta name="image" content={data.strapiOriginalArticle.mainImage} />
-        <meta property="og:url" content={data.strapiOriginalArticle.id} />
+        <meta
+          property="og:url"
+          content={`${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`}
+        />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={data.strapiOriginalArticle.title} />
         <meta
@@ -133,7 +131,7 @@ const ArticleTemplate = ({ data }) => {
      "@type": "SpeakableSpecification",
      "cssSelector": ['.titulo-principal', '.conteudo']
      },
-    "url": "${CANNONNICAL_URL}${data.strapiOriginalArticle.id}"
+    "url": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}"
   }`}
         </script>
       </Helmet>
@@ -144,6 +142,19 @@ const ArticleTemplate = ({ data }) => {
             __html: structuredData,
           }}
         ></script>
+        <script
+          async
+          custom-element="amp-analytics"
+          src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
+        ></script>
+        <amp-analytics type="gtag" data-credentials="include">
+          <script
+            type="application/json"
+            dangerouslySetInnerHTML={{
+              __html: ANALYTICS_SCRIPT,
+            }}
+          ></script>
+        </amp-analytics>
         <div class="single-post-title bg-img background-overlay">
           <div class="container h-100">
             <div class="row h-100 align-items-end">
@@ -222,7 +233,7 @@ const ArticleTemplate = ({ data }) => {
                   article.node.id !== data.strapiOriginalArticle.id ? (
                     <figure class="gazette-single-todays-post d-md-flex align-items-start mb-50">
                       <Link
-                        to={article.node.id}
+                        to={`/${article.node.urlTitle}`}
                         style={{ marginRight: "2%", width: "30%" }}
                       >
                         <amp-img
@@ -238,7 +249,10 @@ const ArticleTemplate = ({ data }) => {
                             {article.node.sport.name}
                           </Link>
                         </div>
-                        <Link to={article.node.id} class="font-pt more-article">
+                        <Link
+                          to={`/${article.node.urlTitle}`}
+                          class="font-pt more-article"
+                        >
                           {article.node.title}
                         </Link>
                       </div>
@@ -254,7 +268,7 @@ const ArticleTemplate = ({ data }) => {
                   article.node.id !== data.strapiOriginalArticle.id ? (
                     <figure class="gazette-single-todays-post d-md-flex align-items-start mb-50">
                       <Link
-                        to={article.node.id}
+                        to={`/${article.node.urlTitle}`}
                         class="image-single-post-mobile"
                         style={{ marginRight: "2%", width: "30%" }}
                       >
@@ -271,7 +285,10 @@ const ArticleTemplate = ({ data }) => {
                             {article.node.sport.name}
                           </Link>
                         </div>
-                        <Link to={article.node.id} class="font-pt more-article">
+                        <Link
+                          to={`/${article.node.urlTitle}`}
+                          class="font-pt more-article"
+                        >
                           {article.node.title}
                         </Link>
                       </div>
