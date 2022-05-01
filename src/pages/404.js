@@ -21,6 +21,10 @@ import {
   STYLE_URL,
 } from "../utils/Constants";
 
+const getDateTime = (date) => {
+  return new Date(date).getTime();
+};
+
 // markup
 const NotFoundPage = ({ data }) => {
   return (
@@ -145,7 +149,7 @@ const NotFoundPage = ({ data }) => {
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
                         <Link
-                          to={article.node.urlTitle}
+                          to={`/${article.node.urlTitle}`}
                           style={{ fontWeight: 400, fontSize: "25px" }}
                           class="font-pt"
                         >
@@ -156,7 +160,10 @@ const NotFoundPage = ({ data }) => {
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
-                        <Date date={article.node.originalDate}></Date>
+                        <Date
+                          datetime={getDateTime(article.node.date)}
+                          date={article.node.date}
+                        ></Date>
                       </span>
                     </div>
                   </div>

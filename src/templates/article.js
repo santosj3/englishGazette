@@ -172,8 +172,8 @@ const ArticleTemplate = ({ data }) => (
                 </h1>
                 <p>
                   <Date
-                    date={data.strapiOriginalArticle.originalDate}
-                    originalDate={data.strapiOriginalArticle.originalDate}
+                    date={data.strapiOriginalArticle.date}
+                    datetime={getDateTime(data.strapiOriginalArticle.date)}
                   ></Date>
                 </p>
               </div>
@@ -247,7 +247,7 @@ const ArticleTemplate = ({ data }) => (
                           {article.node.sport.name}
                         </Link>
                       </div>
-                      <h3 syle={{ marginBottom: "0" }}>
+                      <label syle={{ marginBottom: "0" }}>
                         <Link
                           to={`/${article.node.urlTitle}`}
                           style={{ fontWeight: 400, fontSize: "25px" }}
@@ -255,14 +255,14 @@ const ArticleTemplate = ({ data }) => (
                         >
                           {article.node.title}
                         </Link>
-                      </h3>
+                      </label>
                       <span
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
                         <Date
-                          date={article.node.originalDate}
-                          originalDate={article.node.originalDate}
+                          date={article.node.date}
+                          datetime={getDateTime(article.node.date)}
                         ></Date>
                       </span>
                     </div>
@@ -301,7 +301,7 @@ const ArticleTemplate = ({ data }) => (
                           {article.node.sport.name}
                         </Link>
                       </div>
-                      <h3 syle={{ marginBottom: "0" }}>
+                      <label syle={{ marginBottom: "0" }}>
                         <Link
                           to={`/${article.node.urlTitle}`}
                           style={{ fontWeight: 400, fontSize: "25px" }}
@@ -309,14 +309,14 @@ const ArticleTemplate = ({ data }) => (
                         >
                           {article.node.title}
                         </Link>
-                      </h3>
+                      </label>
                       <span
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
                         <Date
-                          date={article.node.originalDate}
-                          originalDate={article.node.originalDate}
+                          date={article.node.date}
+                          datetime={getDateTime(article.node.date)}
                         ></Date>
                       </span>
                     </div>

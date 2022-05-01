@@ -107,8 +107,8 @@ const IndexPage = ({ data }) => (
             <div class="date">
               <Link class="tagsHp" to={article.node.urlTitle}>
                 <Date
+                  datetime={getDateTime(article.node.date)}
                   date={article.node.date}
-                  datetime={article.node.date}
                 ></Date>
               </Link>
             </div>
@@ -162,7 +162,7 @@ const IndexPage = ({ data }) => (
                       >
                         <Date
                           date={article.node.date}
-                          datetime={article.node.date}
+                          datetime={getDateTime(article.node.date)}
                         ></Date>
                       </span>
                     </div>
@@ -252,7 +252,7 @@ const IndexPage = ({ data }) => (
                       <span>
                         <Date
                           date={article.node.date}
-                          datetime={article.node.date}
+                          datetime={getDateTime(article.node.date)}
                         ></Date>
                       </span>
                     </>

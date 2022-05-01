@@ -50,6 +50,48 @@ const ArticleTemplate = ({ data }) => {
     },
   };
 
+  const ORGANIZATION_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    url: CANNONNICAL_URL,
+    name: TITLE,
+  };
+
+  const BREADCRUMB_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Homepage",
+        item: CANNONNICAL_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "${data.strapiOriginalArticle.sport.name}",
+        item: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport.slug}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `${data.strapiOriginalArticle.title}`,
+      },
+    ],
+  };
+
+  const SPEAKERS_STRUCTURED_DATA = {
+    "@context": "https://schema.org/",
+    "@type": "WebPage",
+    name: data.strapiOriginalArticle.title,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".titulo-principal", ".conteudo"],
+    },
+    url: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`,
+  };
+
   return (
     <>
       <AmpHeader sports={data.allStrapiSport.edges} />
@@ -90,56 +132,26 @@ const ArticleTemplate = ({ data }) => {
           name="twitter:image"
           content={data.strapiOriginalArticle.mainImage}
         />
-        <script type="application/ld+json">
-          {`
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "url": "${CANNONNICAL_URL}",
-        "name": "${TITLE}",        
-      }
-    `}
-        </script>
-        <script type="application/ld+json">
-          {`{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Homepage",
-      "item": "${CANNONNICAL_URL}"
-    },{
-      "@type": "ListItem",
-      "position": 2,
-      "name": "${data.strapiOriginalArticle.sport.name}",
-      "item": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport.slug}"
-    },{
-      "@type": "ListItem",
-      "position": 3,
-      "name": "${data.strapiOriginalArticle.title}"
-    }]
-  }`}
-        </script>
-        <script type="application/ld+json">
-          {`{
-    "@context": "https://schema.org/",
-    "@type": "WebPage",
-    "name": "${data.strapiOriginalArticle.title}",
-    "speakable":
-    {
-     "@type": "SpeakableSpecification",
-     "cssSelector": ['.titulo-principal', '.conteudo']
-     },
-    "url": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}"
-  }`}
-        </script>
       </Helmet>
       <section class="amp-section single-post-area">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
+          }}
+        ></script>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(BREADCRUMB_STRUCTURED_DATA),
+          }}
+        ></script>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(SPEAKERS_STRUCTURED_DATA),
           }}
         ></script>
         <amp-analytics type="gtag" data-credentials="include">
@@ -165,8 +177,8 @@ const ArticleTemplate = ({ data }) => {
                   </h1>
                   <p>
                     <Date
-                      date={data.strapiOriginalArticle.originalDate}
-                      originalDate={data.strapiOriginalArticle.originalDate}
+                      date={data.strapiOriginalArticle.date}
+                      datetime={getDateTime(data.strapiOriginalArticle.date)}
                     ></Date>
                   </p>
                 </div>

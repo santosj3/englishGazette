@@ -175,8 +175,8 @@ const SportTemplate = ({ data, pageContext }) => {
                         style={{ float: "right" }}
                       >
                         <Date
-                          date={article.node.originalDate}
-                          originalDate={article.node.originalDate}
+                          date={article.node.date}
+                          datetime={getDateTime(article.node.date)}
                         ></Date>
                       </span>
                     </div>
