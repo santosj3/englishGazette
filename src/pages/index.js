@@ -1,13 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Date from "../components/date"
-import Image from "../components/image"
-import Logo from '../assets/img/core-img/logo.png'
+import DateComponent from "../components/date";
+import Image from "../components/image";
+import Logo from "../assets/img/core-img/logo.png";
 
-import Header from '../components/header'
-import Footer from '../components/footer'
-import { Helmet } from "react-helmet"
+import Header from "../components/header";
+import Footer from "../components/footer";
+import { Helmet } from "react-helmet";
 
 import {
   LOCALE,
@@ -20,7 +20,7 @@ import {
   STYLE_URL,
 } from "../utils/Constants";
 const getDateTime = (date) => {
-  return new window.Date(date).getTime();
+  return new Date(date).getTime();
 };
 const IndexPage = ({ data }) => (
   <>
@@ -108,10 +108,10 @@ const IndexPage = ({ data }) => (
             </h3>
             <div class="date">
               <Link class="tagsHp" to={article.node.urlTitle}>
-                <Date
+                <DateComponent
                   datetime={getDateTime(article.node.date)}
                   date={article.node.date}
-                ></Date>
+                ></DateComponent>
               </Link>
             </div>
           </div>
@@ -162,10 +162,10 @@ const IndexPage = ({ data }) => (
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
-                        <Date
+                        <DateComponent
                           date={article.node.date}
                           datetime={getDateTime(article.node.date)}
-                        ></Date>
+                        ></DateComponent>
                       </span>
                     </div>
                   </div>
@@ -252,10 +252,10 @@ const IndexPage = ({ data }) => (
                         </Link>
                       </h5>
                       <span>
-                        <Date
+                        <DateComponent
                           date={article.node.date}
                           datetime={getDateTime(article.node.date)}
-                        ></Date>
+                        ></DateComponent>
                       </span>
                     </>
                   </div>

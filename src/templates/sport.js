@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
-import Date from '../components/date'
+import DateComponent from "../components/date";
 import Next from "../assets/img/core-img/next.png";
 import Previous from "../assets/img/core-img/left.png";
 import "../assets/css/pagination.css";
@@ -18,7 +18,7 @@ import {
   STYLE_URL,
 } from "../utils/Constants";
 const getDateTime = (date) => {
-  return new window.Date(date).getTime();
+  return new Date(date).getTime();
 };
 
 const SportTemplate = ({ data, pageContext }) => {
@@ -178,10 +178,10 @@ const SportTemplate = ({ data, pageContext }) => {
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
-                        <Date
+                        <DateComponent
                           date={article.node.date}
                           datetime={getDateTime(article.node.date)}
-                        ></Date>
+                        ></DateComponent>
                       </span>
                     </div>
                   </Link>

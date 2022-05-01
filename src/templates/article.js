@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Image from '../components/image'
-import Date from '../components/date'
+import DateComponent from "../components/date";
 import {
   MORE,
   ANALYTICS,
@@ -16,7 +16,7 @@ import {
 } from "../utils/Constants";
 import { Helmet } from "react-helmet";
 const getDateTime = (date) => {
-  return new window.Date(date).getTime();
+  return new Date(date).getTime();
 };
 
 const ArticleTemplate = ({ data }) => (
@@ -175,10 +175,10 @@ const ArticleTemplate = ({ data }) => (
                   {data.strapiOriginalArticle.title}
                 </h1>
                 <p>
-                  <Date
+                  <DateComponent
                     date={data.strapiOriginalArticle.date}
                     datetime={getDateTime(data.strapiOriginalArticle.date)}
-                  ></Date>
+                  ></DateComponent>
                 </p>
               </div>
             </div>
@@ -264,10 +264,10 @@ const ArticleTemplate = ({ data }) => (
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
-                        <Date
+                        <DateComponent
                           date={article.node.date}
                           datetime={getDateTime(article.node.date)}
-                        ></Date>
+                        ></DateComponent>
                       </span>
                     </div>
                   </Link>
@@ -318,10 +318,10 @@ const ArticleTemplate = ({ data }) => (
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
-                        <Date
+                        <DateComponent
                           date={article.node.date}
                           datetime={getDateTime(article.node.date)}
-                        ></Date>
+                        ></DateComponent>
                       </span>
                     </div>
                   </Link>

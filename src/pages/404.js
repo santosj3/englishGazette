@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Date from "../components/date"
-import Image from "../components/image"
+import DateComponent from "../components/date";
+import Image from "../components/image";
 import Logo from "../assets/img/core-img/logo.png";
 
 import Header from "../components/header";
@@ -22,7 +22,8 @@ import {
 } from "../utils/Constants";
 
 const getDateTime = (date) => {
-  return new window.Date(date).getTime();
+  let dateTime = new Date(date).getTime();
+  return dateTime;
 };
 
 // markup
@@ -160,10 +161,10 @@ const NotFoundPage = ({ data }) => {
                         class="gazette-post-date mb-2"
                         style={{ float: "right" }}
                       >
-                        <Date
+                        <DateComponent
                           datetime={getDateTime(article.node.date)}
                           date={article.node.date}
-                        ></Date>
+                        ></DateComponent>
                       </span>
                     </div>
                   </div>

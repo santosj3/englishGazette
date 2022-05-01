@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import AmpHeader from "../components/ampHeader";
-import Date from "../components/date";
+import DateComponent from "../components/date";
 
 import {
   MORE,
@@ -92,7 +92,7 @@ const ArticleTemplate = ({ data }) => {
     url: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`,
   };
   const getDateTime = (date) => {
-    return new window.Date(date).getTime();
+    return new Date(date).getTime();
   };
   return (
     <>
@@ -178,10 +178,10 @@ const ArticleTemplate = ({ data }) => {
                     {data.strapiOriginalArticle.title}
                   </h1>
                   <p>
-                    <Date
+                    <DateComponent
                       date={data.strapiOriginalArticle.date}
                       datetime={getDateTime(data.strapiOriginalArticle.date)}
-                    ></Date>
+                    ></DateComponent>
                   </p>
                 </div>
               </div>
