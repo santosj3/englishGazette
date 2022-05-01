@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `new`,
-    siteUrl: "https://gazetaesportesmotor.web.app",
+    siteUrl: "https://motorsport-gazette.web.app",
   },
   plugins: [
     "gatsby-plugin-advanced-sitemap",
@@ -25,7 +25,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-amp`,
       options: {
-        canonicalBaseUrl: "https://gazetaesportesmotor.web.app",
+        canonicalBaseUrl: "https://motorsport-gazette.web.app",
         components: [],
         excludedPaths: ["/404*", "/"],
         pathIdentifier: "/amp",
@@ -36,8 +36,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://gazetaesportesmotor.web.app",
-        sitemap: "https://gazetaesportesmotor.web.app/sitemap.xml",
+        host: "https://motorsport-gazette.web.app",
+        sitemap: "https://motorsport-gazette.web.app/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },

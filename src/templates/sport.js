@@ -20,7 +20,7 @@ import {
 const SportTemplate = ({ data, pageContext }) => {
   const logo = LOGO_SPORTS.find(
     (item) => item.id === data.strapiSport.slug
-  )?.url;
+  )?.id;
   const { numPages, currentPage } = pageContext;
   return (
     <>
@@ -136,7 +136,7 @@ const SportTemplate = ({ data, pageContext }) => {
               <div class="gazette-todays-post ">
                 {data?.allStrapiOriginalArticle?.edges.map((article) => (
                   <Link
-                    to={article.node.url}
+                    to={article.node.id}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
                   >
                     <div
@@ -163,7 +163,7 @@ const SportTemplate = ({ data, pageContext }) => {
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
                         <Link
-                          to={article.node.url}
+                          to={article.node.id}
                           style={{ fontWeight: 400, fontSize: "25px" }}
                           class="font-pt"
                         >
@@ -310,7 +310,12 @@ const SportTemplate = ({ data, pageContext }) => {
 export default SportTemplate;
 
 export const query = graphql`
-  query SportTemplate($id: String!, $limit: Int!, $skip: Int!) {
+  query SportTemplate(
+    $id: String!
+    $articleSportId: String!
+    $limit: Int!
+    $skip: Int!
+  ) {
     strapiSport(id: { eq: $id }) {
       id
       name
@@ -326,6 +331,7 @@ export const query = graphql`
       }
     }
     allStrapiOriginalArticle(
+      filter: { sport: { id: { eq: $articleSportId } } }
       limit: $limit
       skip: $skip
       sort: { fields: date, order: DESC }

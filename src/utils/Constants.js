@@ -1,7 +1,7 @@
 //URLS
 //export const BACKEND_URL="http://localhost:1337";
 export const BACKEND_URL='https://f1gazetabe.herokuapp.com/';
-export const CANNONNICAL_URL='http://localhost:8000';
+export const CANNONNICAL_URL = "https://motorsport-gazette.web.app";
 
 //COLLECTIONS
 export const SPORT_COLLECTION='sport';
