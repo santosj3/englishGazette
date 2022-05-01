@@ -139,14 +139,14 @@ const ArticleTemplate = ({ data }) => {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: structuredData,
+            __html: JSON.stringify(structuredData),
           }}
         ></script>
         <amp-analytics type="gtag" data-credentials="include">
           <script
             type="application/json"
             dangerouslySetInnerHTML={{
-              __html: ANALYTICS_SCRIPT,
+              __html: JSON.stringify(ANALYTICS_SCRIPT),
             }}
           ></script>
         </amp-analytics>
