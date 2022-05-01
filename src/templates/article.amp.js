@@ -24,8 +24,8 @@ const ArticleTemplate = ({ data }) => {
     },
     headline: data.strapiOriginalArticle.title,
     image: [data.strapiOriginalArticle.mainImage],
-    datePublished: data.strapiOriginalArticle.dateToGoogle,
-    dateModified: data.strapiOriginalArticle.dateToGoogle,
+    datePublished: data.strapiOriginalArticle.date,
+    dateModified: data.strapiOriginalArticle.date,
     author: {
       "@type": "Person",
       name: "Carlos Santos",

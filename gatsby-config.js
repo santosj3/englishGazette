@@ -26,7 +26,7 @@ module.exports = {
       resolve: `gatsby-plugin-amp`,
       options: {
         canonicalBaseUrl: "https://motorsport-gazette.web.app",
-        components: [],
+        components: ["amp-analytics"],
         excludedPaths: ["/404*", "/"],
         pathIdentifier: "/amp",
         relAmpHtmlPattern: "{{canonicalBaseUrl}}{{pathname}}{{pathIdentifier}}",
