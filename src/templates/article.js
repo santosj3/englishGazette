@@ -249,7 +249,7 @@ const ArticleTemplate = ({ data }) => (
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
                         <Link
-                          to={`${article.node.urlTitle}`}
+                          to={`/${article.node.urlTitle}`}
                           style={{ fontWeight: 400, fontSize: "25px" }}
                           class="font-pt"
                         >
@@ -279,7 +279,7 @@ const ArticleTemplate = ({ data }) => (
               {data?.lastArticles?.edges.map((article) =>
                 article.node.id !== data.strapiOriginalArticle.id ? (
                   <Link
-                    to={`${article.node.urlTitle}`}
+                    to={`/${article.node.urlTitle}`}
                     class="gazette-single-todays-post d-md-flex align-items-start mb-50"
                   >
                     <div
