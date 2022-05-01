@@ -16,7 +16,7 @@ import {
 } from "../utils/Constants";
 import { Helmet } from "react-helmet";
 const getDateTime = (date) => {
-  return new Date(date).getTime();
+  return new window.Date(date).getTime();
 };
 
 const ArticleTemplate = ({ data }) => (

@@ -92,7 +92,7 @@ const ArticleTemplate = ({ data }) => {
     url: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`,
   };
   const getDateTime = (date) => {
-    return new Date(date).getTime();
+    return new window.Date(date).getTime();
   };
   return (
     <>

@@ -20,7 +20,7 @@ import {
   STYLE_URL,
 } from "../utils/Constants";
 const getDateTime = (date) => {
-  return new Date(date).getTime();
+  return new window.Date(date).getTime();
 };
 const IndexPage = ({ data }) => (
   <>

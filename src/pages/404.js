@@ -22,7 +22,7 @@ import {
 } from "../utils/Constants";
 
 const getDateTime = (date) => {
-  return new Date(date).getTime();
+  return new window.Date(date).getTime();
 };
 
 // markup
