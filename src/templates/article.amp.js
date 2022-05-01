@@ -142,11 +142,6 @@ const ArticleTemplate = ({ data }) => {
             __html: structuredData,
           }}
         ></script>
-        <script
-          async
-          custom-element="amp-analytics"
-          src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
-        ></script>
         <amp-analytics type="gtag" data-credentials="include">
           <script
             type="application/json"
@@ -209,6 +204,8 @@ const ArticleTemplate = ({ data }) => {
                       .replaceAll("</div<", "<")
                       .replaceAll("<style>", "<div className='erro-estilo'>")
                       .replaceAll('loading="lazy"', " ")
+                      .replaceAll("<picture>", "<figure>")
+                      .replaceAll("</picture>", "</figure>")
                       .replaceAll("</style>", "</div>"),
                   }}
                 ></div>
