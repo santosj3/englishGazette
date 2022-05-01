@@ -19,7 +19,9 @@ import {
   CANNONNICAL_URL,
   STYLE_URL,
 } from "../utils/Constants";
-
+const getDateTime = (date) => {
+  return new Date(date).getTime();
+};
 const IndexPage = ({ data }) => (
   <>
     <Header sports={data.allStrapiSport.edges} />

@@ -15,6 +15,10 @@ import {
   STYLE_URL,
 } from "../utils/Constants";
 import { Helmet } from "react-helmet";
+const getDateTime = (date) => {
+  return new Date(date).getTime();
+};
+
 const ArticleTemplate = ({ data }) => (
   <>
     <Header sports={data.allStrapiSport.edges} />

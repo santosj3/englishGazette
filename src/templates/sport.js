@@ -17,6 +17,10 @@ import {
   CANNONNICAL_URL,
   STYLE_URL,
 } from "../utils/Constants";
+const getDateTime = (date) => {
+  return new Date(date).getTime();
+};
+
 const SportTemplate = ({ data, pageContext }) => {
   const logo = LOGO_SPORTS.find(
     (item) => item.id === data.strapiSport.slug

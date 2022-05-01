@@ -91,7 +91,9 @@ const ArticleTemplate = ({ data }) => {
     },
     url: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`,
   };
-
+  const getDateTime = (date) => {
+    return new Date(date).getTime();
+  };
   return (
     <>
       <AmpHeader sports={data.allStrapiSport.edges} />
