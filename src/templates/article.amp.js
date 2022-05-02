@@ -218,6 +218,7 @@ const ArticleTemplate = ({ data }) => {
                   class="conteudo single-post-text"
                   dangerouslySetInnerHTML={{
                     __html: data.strapiOriginalArticle.content
+                      .replaceAll("data-src", "src")
                       .replaceAll("<div<", "<")
                       .replaceAll("</div<", "<")
                       .replaceAll("<style>", "<div className='erro-estilo'>")

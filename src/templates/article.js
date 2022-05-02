@@ -210,7 +210,10 @@ const ArticleTemplate = ({ data }) => (
               <div
                 class="conteudo single-post-text"
                 dangerouslySetInnerHTML={{
-                  __html: data.strapiOriginalArticle.content,
+                  __html: data.strapiOriginalArticle.content.replaceAll(
+                    "data-src",
+                    "src"
+                  ),
                 }}
               ></div>
             </div>
