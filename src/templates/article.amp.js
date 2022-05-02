@@ -124,6 +124,10 @@ const ArticleTemplate = ({ data }) => {
           property="og:image"
           content={data.strapiOriginalArticle.mainImage}
         />
+        <link
+          rel="canonical"
+          href={`${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`}
+        ></link>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={data.strapiOriginalArticle.title} />
         <meta

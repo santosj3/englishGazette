@@ -61,6 +61,10 @@ const SportTemplate = ({ data, pageContext }) => {
           property="og:url"
           content={`${CANNONNICAL_URL}/${data.strapiSport.slug}`}
         />
+        <link
+          rel="canonical"
+          href={`${CANNONNICAL_URL}/${data.strapiSport.slug}`}
+        ></link>
         <meta property="og:type" content="website" />
         <meta property="og:locale" content={LOCALE} />
         <meta property="og:title" content={data.strapiSport.name} />

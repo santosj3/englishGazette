@@ -56,6 +56,10 @@ const ArticleTemplate = ({ data }) => (
       <meta property="og:type" content="article" />
       <meta property="og:locale" content={LOCALE} />
       <meta property="og:title" content={data.strapiOriginalArticle.title} />
+      <link
+        rel="canonical"
+        href={`${CANNONNICAL_URL}/${data.strapiOriginalArticle.urlTitle}`}
+      ></link>
       <meta
         property="og:description"
         content={data.strapiOriginalArticle.description}

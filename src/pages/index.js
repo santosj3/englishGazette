@@ -50,6 +50,8 @@ const IndexPage = ({ data }) => (
       <meta name="description" content={DESCRIPTION} />
       <meta name="image" content={Logo} />
       <meta property="og:url" content={CANNONNICAL_URL} />
+
+      <link rel="canonical" href={`${CANNONNICAL_URL}`}></link>
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={LOCALE} />
       <meta property="og:title" content={TITLE} />
