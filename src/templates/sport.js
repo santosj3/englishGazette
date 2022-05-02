@@ -132,7 +132,6 @@ const SportTemplate = ({ data, pageContext }) => {
           </div>
         </div>
       </section>
-
       <section class="main-content-wrapper section_padding_100">
         <div class="container">
           <div class="row">
