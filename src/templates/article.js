@@ -105,8 +105,8 @@ const ArticleTemplate = ({ data }) => (
       },{
         "@type": "ListItem",
         "position": 2,
-        "name": "${data.strapiOriginalArticle.sport.name}",
-        "item": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport.slug}"
+        "name": "${data.strapiOriginalArticle.sport?.name}",
+        "item": "${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport?.slug}"
       },{
         "@type": "ListItem",
         "position": 3,
@@ -171,8 +171,8 @@ const ArticleTemplate = ({ data }) => (
             <div class="col-12">
               <div class="single-post-title-content">
                 <div class="gazette-post-tag">
-                  <Link to={`/${data.strapiOriginalArticle.sport.slug}`}>
-                    {data.strapiOriginalArticle.sport.name}
+                  <Link to={`/${data.strapiOriginalArticle.sport?.slug}`}>
+                    {data.strapiOriginalArticle.sport?.name}
                   </Link>
                 </div>
                 <h1 style={{ color: "white" }} class="titulo-principal font-pt">

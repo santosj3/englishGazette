@@ -70,7 +70,7 @@ const ArticleTemplate = ({ data }) => {
       {
         "@type": "ListItem",
         position: 2,
-        name: "${data.strapiOriginalArticle.sport.name}",
+        name: "${data.strapiOriginalArticle.sport?.name}",
         item: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport?.slug}`,
       },
       {
@@ -175,7 +175,7 @@ const ArticleTemplate = ({ data }) => {
                 <div class="amp-section single-post-title-content">
                   <div class=" gazette-post-tag">
                     <Link to={`/${data.strapiOriginalArticle.sport?.slug}`}>
-                      {data.strapiOriginalArticle.sport.name}
+                      {data.strapiOriginalArticle.sport?.name}
                     </Link>
                   </div>
                   <h1 class="amp-section titulo-principal font-pt">
@@ -242,7 +242,7 @@ const ArticleTemplate = ({ data }) => {
                 <div class="gazette-heading">
                   <h4>
                     {MORE}
-                    {data.strapiOriginalArticle.sport.name}
+                    {data.strapiOriginalArticle.sport?.name}
                   </h4>
                 </div>
                 {data?.relatedArticle?.edges.map((article) =>
@@ -262,7 +262,7 @@ const ArticleTemplate = ({ data }) => {
                       <div>
                         <div class="gazette-post-tag">
                           <Link to={`/${article.node.sport?.slug}`}>
-                            {article.node.sport.name}
+                            {article.node.sport?.name}
                           </Link>
                         </div>
                         <Link
@@ -298,7 +298,7 @@ const ArticleTemplate = ({ data }) => {
                       <div class="text-single-post-mobile">
                         <div class="gazette-post-tag">
                           <Link to={`/${article.node.sport?.slug}`}>
-                            {article.node.sport.name}
+                            {article.node.sport?.name}
                           </Link>
                         </div>
                         <Link
