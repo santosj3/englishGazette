@@ -25,14 +25,14 @@ exports.createPages = async ({ graphql, actions }) => {
       var articlesPerSport = [];
       var sports = [];
       result.data.allStrapiOriginalArticle.edges.forEach(({ node }) => {
-        sports.find((sport) => sport.id == node.sport.id)
+        sports.find((sport) => sport?.id == node.sport?.id)
           ? null
           : sports.push(node.sport);
       });
       sports.forEach((sport) => {
         articlesPerSport.push({
           articles: result.data.allStrapiOriginalArticle.edges.filter(
-            ({ node }) => node.sport.id === sport.id
+            ({ node }) => node.sport?.id === sport?.id
           ),
           sport,
         });
@@ -45,8 +45,8 @@ exports.createPages = async ({ graphql, actions }) => {
             path: i === 0 ? `/${node.slug}` : `/${node.slug}/${i + 1}`,
             component: path.resolve(`src/templates/sport.js`),
             context: {
-              id: `Sport_${node.id}`,
-              articleSportId: node.id,
+              id: `Sport_${node?.id}`,
+              articleSportId: node?.id,
               limit: ARTICLES_PAGE,
               skip: i * ARTICLES_PAGE,
               numPages,
@@ -60,8 +60,8 @@ exports.createPages = async ({ graphql, actions }) => {
           path: `${node.urlTitle}`,
           component: path.resolve(`src/templates/article.js`),
           context: {
-            id: node.id,
-            sportId: node.sport.id,
+            id: node?.id,
+            sportId: node.sport?.id,
           },
         });
         createPage({
@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
           component: path.resolve(`src/templates/article.amp.js`),
           context: {
             id: node.id,
-            sportId: node.sport.id,
+            sportId: node.sport?.id,
           },
         });
       });
