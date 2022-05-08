@@ -99,8 +99,8 @@ const IndexPage = ({ data }) => (
         >
           <div class="post-sozinho">
             <div class="tags">
-              <Link to={`/${article.node.sport.slug}`}>
-                {article.node.sport.name}
+              <Link to={`/${article.node.sport?.slug}`}>
+                {article.node.sport?.name}
               </Link>
             </div>
             <h3>
@@ -147,8 +147,8 @@ const IndexPage = ({ data }) => (
                     </div>
                     <div class="text-single-post-hp">
                       <div class="gazette-post-tag">
-                        <Link to={`/${article.node.sport.slug}`}>
-                          {article.node.sport.name}
+                        <Link to={`/${article.node.sport?.slug}`}>
+                          {article.node.sport?.name}
                         </Link>
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
@@ -203,7 +203,7 @@ const IndexPage = ({ data }) => (
                         alt={article.node.title}
                       />
                       <div class="breakingnews-title">
-                        <p>{article.node.sport.name}</p>
+                        <p>{article.node.sport?.name}</p>
                       </div>
                       <div
                         class="breaking-news-heading gradient-background-overlay"
@@ -243,8 +243,8 @@ const IndexPage = ({ data }) => (
                         />
                       </div>
                       <div class="gazette-post-tag">
-                        <Link to={article.node.sport.slug}>
-                          {article.node.sport.name}
+                        <Link to={article.node.sport?.slug}>
+                          {article.node.sport?.name}
                         </Link>
                       </div>
                       <h5>

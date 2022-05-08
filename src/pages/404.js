@@ -144,8 +144,8 @@ const NotFoundPage = ({ data }) => {
                       style={{ width: "68%" }}
                     >
                       <div class="gazette-post-tag">
-                        <Link to={`/${article.node.sport.slug}`}>
-                          {article.node.sport.name}
+                        <Link to={`/${article.node.sport?.slug}`}>
+                          {article.node.sport?.name}
                         </Link>
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>

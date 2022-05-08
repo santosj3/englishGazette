@@ -163,9 +163,9 @@ const SportTemplate = ({ data, pageContext }) => {
                       <div class="gazette-post-tag">
                         <Link
                           class="titulos"
-                          to={`/${article.node.sport.slug}`}
+                          to={`/${article.node.sport?.slug}`}
                         >
-                          {article.node.sport.name}
+                          {article.node.sport?.name}
                         </Link>
                       </div>
                       <h3 syle={{ marginBottom: "0" }}>
