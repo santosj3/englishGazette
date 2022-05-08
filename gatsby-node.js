@@ -40,38 +40,42 @@ exports.createPages = async ({ graphql, actions }) => {
       articlesPerSport.forEach((item) => {
         const numPages = Math.ceil(item.articles.length / ARTICLES_PAGE);
         let node = item.sport;
-        Array.from({ length: numPages }).forEach((j, i) => {
-          createPage({
-            path: i === 0 ? `/${node.slug}` : `/${node.slug}/${i + 1}`,
-            component: path.resolve(`src/templates/sport.js`),
-            context: {
-              id: `Sport_${node?.id}`,
-              articleSportId: node?.id,
-              limit: ARTICLES_PAGE,
-              skip: i * ARTICLES_PAGE,
-              numPages,
-              currentPage: i + 1,
-            },
+        if (node && node.slug && node.id) {
+          Array.from({ length: numPages }).forEach((j, i) => {
+            createPage({
+              path: i === 0 ? `/${node.slug}` : `/${node.slug}/${i + 1}`,
+              component: path.resolve(`src/templates/sport.js`),
+              context: {
+                id: `Sport_${node?.id}`,
+                articleSportId: node?.id,
+                limit: ARTICLES_PAGE,
+                skip: i * ARTICLES_PAGE,
+                numPages,
+                currentPage: i + 1,
+              },
+            });
           });
-        });
+        }
       });
       result.data.allStrapiOriginalArticle.edges.forEach(({ node }) => {
-        createPage({
-          path: `${node.urlTitle}`,
-          component: path.resolve(`src/templates/article.js`),
-          context: {
-            id: node?.id,
-            sportId: node.sport?.id,
-          },
-        });
-        createPage({
-          path: `${node.urlTitle}/amp`,
-          component: path.resolve(`src/templates/article.amp.js`),
-          context: {
-            id: node.id,
-            sportId: node.sport?.id,
-          },
-        });
+        if (node && node.urlTitle && node.id && node.sport && node.sport.id) {
+          createPage({
+            path: `${node.urlTitle}`,
+            component: path.resolve(`src/templates/article.js`),
+            context: {
+              id: node?.id,
+              sportId: node.sport?.id,
+            },
+          });
+          createPage({
+            path: `${node.urlTitle}/amp`,
+            component: path.resolve(`src/templates/article.amp.js`),
+            context: {
+              id: node.id,
+              sportId: node.sport?.id,
+            },
+          });
+        }
       });
       resolve();
     });
