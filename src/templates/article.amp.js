@@ -71,7 +71,7 @@ const ArticleTemplate = ({ data }) => {
         "@type": "ListItem",
         position: 2,
         name: "${data.strapiOriginalArticle.sport.name}",
-        item: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport.slug}`,
+        item: `${CANNONNICAL_URL}/${data.strapiOriginalArticle.sport?.slug}`,
       },
       {
         "@type": "ListItem",
@@ -174,7 +174,7 @@ const ArticleTemplate = ({ data }) => {
               <div class="col-12">
                 <div class="amp-section single-post-title-content">
                   <div class=" gazette-post-tag">
-                    <Link to={`/${data.strapiOriginalArticle.sport.slug}`}>
+                    <Link to={`/${data.strapiOriginalArticle.sport?.slug}`}>
                       {data.strapiOriginalArticle.sport.name}
                     </Link>
                   </div>
@@ -261,7 +261,7 @@ const ArticleTemplate = ({ data }) => {
                       </Link>
                       <div>
                         <div class="gazette-post-tag">
-                          <Link to={`/${article.node.sport.slug}`}>
+                          <Link to={`/${article.node.sport?.slug}`}>
                             {article.node.sport.name}
                           </Link>
                         </div>
@@ -297,7 +297,7 @@ const ArticleTemplate = ({ data }) => {
                       </Link>
                       <div class="text-single-post-mobile">
                         <div class="gazette-post-tag">
-                          <Link to={`/${article.node.sport.slug}`}>
+                          <Link to={`/${article.node.sport?.slug}`}>
                             {article.node.sport.name}
                           </Link>
                         </div>
