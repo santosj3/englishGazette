@@ -230,7 +230,7 @@ const ArticleTemplate = ({ data }) => (
               <div class="gazette-heading">
                 <h4 style={{ fontSize: "24px", textTransform: "uppercase" }}>
                   {MORE}
-                  {data.strapiOriginalArticle.sport.name}
+                  {data.strapiOriginalArticle.sport?.name}
                 </h4>
               </div>
               {data?.relatedArticle?.edges.map((article) =>
@@ -254,8 +254,8 @@ const ArticleTemplate = ({ data }) => (
                       style={{ width: "68%" }}
                     >
                       <div class="gazette-post-tag">
-                        <Link to={`/${article.node.sport.slug}`}>
-                          {article.node.sport.name}
+                        <Link to={`/${article.node.sport?.slug}`}>
+                          {article.node.sport?.name}
                         </Link>
                       </div>
                       <label syle={{ marginBottom: "0" }}>
@@ -308,8 +308,8 @@ const ArticleTemplate = ({ data }) => (
                       style={{ width: "68%" }}
                     >
                       <div class="gazette-post-tag">
-                        <Link to={`/${article.node.sport.slug}`}>
-                          {article.node.sport.name}
+                        <Link to={`/${article.node.sport?.slug}`}>
+                          {article.node.sport?.name}
                         </Link>
                       </div>
                       <label syle={{ marginBottom: "0" }}>
